@@ -1,6 +1,18 @@
 #ifndef CANBUS_MSG_H
 #define CANBUS_MSG_H
 
+#define           FEATURE_MASK_SIZE     2 // size of feature mask in bytes
+#define           NODE_ID_SIZE          4 // node ID length in bytes
+
+// Define clear return values for various error conditions
+#define           NODE_NOT_FOUND        -1
+#define           NODE_LIST_FULL        -5
+#define           NODE_ID_INVALID       -2
+#define           NODE_ALREADY_EXISTS   -6
+#define           MODULE_NOT_FOUND      -10
+#define           MODULE_ALREADY_EXISTS -3
+#define           MODULE_LIST_FULL      -4
+
 #define MASK_24BIT 0xFF0  // returns 0x7x0 if message ID is between 0x7x0 and 0x7xF
 #define MASK_25BIT 0xFF8  // returns 0x7x8 if message ID is between 0x7x8 and 0x7XF
 
