@@ -203,8 +203,8 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define INPUT_RFID_READER 0x71B // RFID reader input DLC 
 #define BUTTON_CONTACT_PULL_DOWN 0x71C // button contact pull down DLC 
 #define BUTTON_CONTACT_PULL_UP 0x71D // button contact pull up DLC 
-#define CONTACT_CLOSURE_RESERVED 0x71E // contact closure reserved DLC 5
-#define CONTACT_CLOSURE_RESERVED 0x71F // contact closure reserved DLC 5
+#define BUTTON_RESERVED_71E 0x71E // button reserved 71e DLC 5
+#define BUTTON_RESERVED_71F 0x71F // button reserved 71f DLC 5
 #define INPUT_DIGITAL_TEMP 0x720 // input digital temp DLC 5
 #define INPUT_K_TYPE_TEMP 0x721 // input k type temp DLC 5
 #define NODE_LASTBOOT 0x722 // last boot timestamp DLC 5
@@ -218,9 +218,9 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define INPUT_EXT_CURRENT_HALL 0x72A // input ext current hall DLC 5
 #define GPS_ALTITUDE 0x72B // GPS altitude DLC 5
 #define GPS_STATUS 0x72C // GPS status DLC 5
-#define SENSOR_RESERVED_0X72D 0x72D // reserved 0x72D DLC 5
-#define SENSOR_RESERVED_0X72E 0x72E // reserved 0x72E DLC 5
-#define SENSOR_RESERVED_0X72F 0x72F // reserved 0x72F DLC 5
+#define SENSOR_RESERVED_72D 0x72D // sensor reserved 72d DLC 5
+#define SENSOR_RESERVED_72E 0x72E // sensor reserved 72e DLC 5
+#define SENSOR_RESERVED_72F 0x72F // sensor reserved 72f DLC 5
 #define INPUT_AMBIENT_LIGHT 0x730 // input ambient light DLC 5
 #define IMU_X_AXIS_SENSOR 0x731 // IMU X Axis sensor DLC 5
 #define IMU_Y_AXIS_SENSOR 0x732 // IMU Y Axis sensor DLC 5
