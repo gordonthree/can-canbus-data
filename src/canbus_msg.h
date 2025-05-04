@@ -11,7 +11,8 @@
                                // introduction message types
 #define INTRO_INTERFACE 0x700  // introduction messages for interface nodes
 #define INTRO_BOX       0x750  // introduction messages for box nodes
-#define INTRO_OUTPUT    0x718  // introduction messages for output nodes
+#define INTRO_OUTPUT    0x718  // introduction messages for output switch modules
+#define INTRO_DATA      0x700  // introduction for data modules
 
                                                           // feature masks for node types
 const uint8_t FEATURE_BOX_SW_6GANG_HIGH[] = {0x8E,0xC0};  // feature mask for 6-gang switch box, 4 high, 2 low
