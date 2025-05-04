@@ -22,6 +22,10 @@
 #define ADDR_FIRST_NODE   0x780  // first valiud address for remote nodes
 #define ADDR_FIRST_MODULE 0x700  // first valid address for sub modules
 
+#define MSG_CTRL_SWITCHES     0x110  // switch box controls
+#define MSG_CTRL_IFACE        0x200  // interface node controls
+#define MSG_REQ_INTRO         0x400  // messages related to introductions
+
 // #define MASK_24BIT 0xFF0  // returns 0x7x0 if message ID is between 0x7x0 and 0x7xF
 // sub module types // node and module masks 
 // #define INTRO_DISPLAY   0x710  // introduction for data modules
