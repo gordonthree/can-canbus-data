@@ -15,10 +15,12 @@
 #define           MODULE_LIST_FULL      -4
 
 
-#define ACCEPT_CODE     0x13F       // 0001 0011 1111 
-#define ACCEPT_MASK     0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
-
-#define NODE_MOD_MASK   0x780  // 0x700 to 0x77F are sub modules, 0x780 and above are remote nodes
+#define ACCEPT_CODE       0x13F       // 0001 0011 1111 
+#define ACCEPT_MASK       0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
+  
+#define NODE_MOD_MASK     0x780  // 0x700 to 0x77F are sub modules, 0x780 and above are remote nodes
+#define ADDR_FIRST_NODE   0x780  // first valiud address for remote nodes
+#define ADDR_FIRST_MODULE 0x700  // first valid address for sub modules
 
 // #define MASK_24BIT 0xFF0  // returns 0x7x0 if message ID is between 0x7x0 and 0x7xF
 // sub module types // node and module masks 
