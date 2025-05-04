@@ -143,6 +143,7 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define IFACE_TOUCHSCREEN_TYPE_B 0x703  // touchscreen type b DLC 6
 #define IFACE_NEXTION_TYPE_A 0x706      // nextion type a DLC 6
 #define IFACE_NEXTION_TYPE_B 0x707      // nextion type b DLC 6
+#define IFACE_6_AXIS_IMU 0x70B          // 6 axis imu DLC 6
 #define IFACE_3X5_BUTTON_BOX 0x70C      // 3x5 button box DLC 6
 #define IFACE_4X6_BUTTON_BOX 0x70D      // 4x6 button box DLC 6
 
