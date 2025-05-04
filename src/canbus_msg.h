@@ -141,10 +141,12 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_ARGB_BUTTON_COLOR 0x524         // argb button color DLC 7
 #define DATA_ARGB_BUTTON_LED_MODE 0x525      // argb button led mode DLC 7
 
-#define IFACE_8X4_ARGB_KEYPAD 0x700     // 8x4 argb keypad DLC 6
-#define IFACE_4X4_ARGB_KEYPAD 0x701     // 4x4 argb keypad DLC 6
-#define IFACE_TOUCHSCREEN_TYPE_A 0x702  // touchscreen type a DLC 6
-#define IFACE_TOUCHSCREEN_TYPE_B 0x703  // touchscreen type b DLC 6
+#define ACK_IFACE 0x700                 // acknowledge interface introduction DLC 4
+#define REQ_IFACE 0x701                 // request interface introductions DLC 4
+#define IFACE_8X4_ARGB_KEYPAD 0x702     // 8x4 argb keypad DLC 6
+#define IFACE_4X4_ARGB_KEYPAD 0x703     // 4x4 argb keypad DLC 6
+#define IFACE_TOUCHSCREEN_TYPE_A 0x704  // touchscreen type a DLC 6
+#define IFACE_TOUCHSCREEN_TYPE_B 0x705  // touchscreen type b DLC 6
 #define IFACE_NEXTION_TYPE_A 0x706      // nextion type a DLC 6
 #define IFACE_NEXTION_TYPE_B 0x707      // nextion type b DLC 6
 #define IFACE_6_AXIS_IMU 0x70B          // 6 axis imu DLC 6
