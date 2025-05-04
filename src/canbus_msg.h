@@ -1,6 +1,49 @@
 #ifndef CANBUS_MSG_H
 #define CANBUS_MSG_H
 
+#define MASK_24BIT 0xFF0  // returns 0x7x0 if message ID is between 0x7x0 and 0x7xF
+#define MASK_25BIT 0xFF8  // returns 0x7x8 if message ID is between 0x7x8 and 0x7XF
+
+#define ACCEPT_CODE 0x13F       // 0001 0011 1111 
+#define ACCEPT_MASK 0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
+
+                               // introduction message types
+#define INTRO_INTERFACE 0x700  // introduction messages for interface nodes
+#define INTRO_BOX       0x750  // introduction messages for box nodes
+#define INTRO_OUTPUT    0x718  // introduction messages for output switch modules
+#define INTRO_DATA      0x700  // introduction for data modules
+#define INTRO_SENSOR    0x740  // introduction for sensor modules
+#define INTRO_DIAG      0x730  // introduction for diagnostic modules
+
+                                                          // feature masks for node types
+const uint8_t FEATURE_BOX_SW_6GANG_HIGH[] = {0x8E,0xC0};  // feature mask for 6-gang switch box, 4 high, 2 low
+const uint8_t FEATURE_BOX_SW_3GANG[] = {0x8E,0x60};       // feature mask for 3-gang output, 2 high, 1 low
+const uint8_t FEATURE_BOX_SW_2GANG_LOW[] = {0x8E,0x40};   // feature mask for 2-gang switch box, 2 low
+const uint8_t FEATURE_BOX_SW_4GANG[] = {0x8E,0x80};       // feature mask for 4-gang switch box, 2 high, 2 low
+const uint8_t FEATURE_BOX_SW_4RELAY[] = {0x8C,0x08};      // feature mask for 4-gang relay output box
+const uint8_t FEATURE_BOX_SW_6GANG_LOW[] = {0x8E,0xC0};   // feature mask for 6-gang switch box, 2 high, 4 low
+const uint8_t FEATURE_BOX_SW_2GANG_HIGH[] = {0x8E,0x40};  // feature mask for 2-gang switch box, 2 high
+const uint8_t FEATURE_BOX_SW_8RELAY[] = {0x8C,0x10};      // feature mask for 8-gang relay output box
+const uint8_t FEATURE_BOX_MULTI_4X4IO[] = {0xCC,0x08};    // feature mask for input - output box, 4 in, 4 out
+const uint8_t FEATURE_BOX_MULTI_4XTEMP[] = {0xCC,0x00};   // feature mask for 4-digital multi temp input box
+const uint8_t FEATURE_BOX_MULTI_TVA[] = {0xBC,0x00};      // feature mask for temp, volt, current input box
+
+const uint8_t FEATURE_IFACE_8X4_ARGB[]           = {0xC1,0xA4};  // feature mask for 8x4 argb keypad
+const uint8_t FEATURE_IFACE_4X4_ARGB[]           = {0xA1,0xA4};  // feature mask for 4x4 argb keypad
+const uint8_t FEATURE_IFACE_TOUCHSCREEN_TYPE_A[] = {0x81,0xD8};  // feature mask for touchscreen type a
+const uint8_t FEATURE_IFACE_TOUCHSCREEN_TYPE_B[] = {0x81,0xD8};  // feature mask for touchscreen type b
+const uint8_t FEATURE_IFACE_NEXTION_TYPE_A[]     = {0x81,0xD8};  // feature mask for nextion type a
+const uint8_t FEATURE_IFACE_NEXTION_TYPE_B[]     = {0x81,0xD8};  // feature mask for nextion type b
+const uint8_t FEATURE_IFACE_6_AXIS_IMU[]         = {0x91,0x80};  // feature mask for 6-axis IMU
+const uint8_t FEATURE_IFACE_3X5_BUTTON_BOX[]     = {0x9F,0x80};  // feature mask for 3x5 button box
+const uint8_t FEATURE_IFACE_4x6_BUTTON_BOX[]     = {0xB1,0x80};  // feature mask for 4x6 button box
+const uint8_t FEATURE_DISP_ANALOG_LED_STRIP[]    = {0x81,0xE2};  // feature mask for analog led strip
+const uint8_t FEATURE_DISP_ARGBW_LED_STRIP[]     = {0x81,0xE4};  // feature mask for argbw led strip
+const uint8_t FEATURE_DISP_ARGB_LED_STRIP[]      = {0x80,0x64};  // feature mask for argb led strip
+const uint8_t FEATURE_DISP_OLED[]                = {0x80,0x40};  // feature mask for non-touch oled display
+const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask for non-touch lcd display
+
+// ======================= CUT HERE FOR SHEETS RESYNC ==========================
 #define ERROR_OVER_CURRENT 0x100 // over current DLC 6
 #define ERROR_OVER_TEMP 0x101 // over temp DLC 6
 #define ERROR_OVER_VOLT 0x102 // over volt DLC 6
@@ -199,5 +242,6 @@
 #define BOX_MULTI_TVA 0x758 // temp, volt, current input box DLC 6
 #define BOX_SW_8RELAY 0x759 // 8-gang relay output box DLC 6
 #define BOX_MULTI_4X4IO 0x75A // input - output box, 4 in, 4 out DLC 6
+// ======================= CUT HERE FOR SHEETS RESYNC ==========================
 
 #endif
