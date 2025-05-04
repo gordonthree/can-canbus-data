@@ -122,16 +122,16 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define REQ_HEALTHCHECK 0x405 // remote nodes should respond with diagnostic sensor data DLC 4
 #define REQ_IFACE 0x406 // req interfaces node include buttons, displays leds and sensors DLC 4
 #define REQ_SWITCHBOX 0x407 // req switch boxes nodes include anything that controls a load DLC 4
-
-#define REQ_BUTTONS 0x410 // req buttons DLC 
-#define REQ_OUTPUTS 0x411 // req outputs DLC 
-#define REQ_DISPLAYS 0x412 // req displays DLC 
-#define REQ_TEMP_SENSOR 0x413 // req temp sensor DLC 
-#define REQ_VOLT_SENSOR 0x414 // req volt sensor DLC 
-#define REQ_AMP_SENSOR 0x415 // req amp sensor DLC 
-#define REQ_CLOSURE_INPUT 0x416 // req closure input DLC 
-#define REQ_AMBIENT_LIGHT 0x417 // req ambient light sensors DLC 
-#define REQ_IMU_SENSORS 0x418 // req imu sensors DLC 
+#define DATA_EPOCH 0x40C // epoch from controller DLC 8
+#define REQ_BUTTONS 0x410 // req buttons DLC 4
+#define REQ_OUTPUTS 0x411 // req outputs DLC 4
+#define REQ_DISPLAYS 0x412 // req displays DLC 4
+#define REQ_TEMP_SENSOR 0x413 // req temp sensor DLC 4
+#define REQ_VOLT_SENSOR 0x414 // req volt sensor DLC 4
+#define REQ_AMP_SENSOR 0x415 // req amp sensor DLC 4
+#define REQ_CLOSURE_INPUT 0x416 // req closure input DLC 4
+#define REQ_AMBIENT_LIGHT 0x417 // req ambient light sensors DLC 4
+#define REQ_IMU_SENSORS 0x418 // req imu sensors DLC 4
 
 #define DATA_BUTTON_DOWN 0x500 // button down DLC 7
 #define DATA_BUTTON_UP 0x501 // button up DLC 7
@@ -171,7 +171,6 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_DISPLAY_FLASHING 0x523 // display flashing DLC 6
 #define DATA_ARGB_BUTTON_COLOR 0x524 // argb button color DLC 7
 #define DATA_ARGB_BUTTON_LED_MODE 0x525 // argb button led mode DLC 7
-#define DATA_EPOCH 0x526 // epoch from controller DLC 
 
 #define DISP_ANALOG_LED_STRIP 0x700 // analog led strip DLC 8
 #define DISP_ARGBW_LED_STRIP 0x701 // argbw led strip DLC 8
