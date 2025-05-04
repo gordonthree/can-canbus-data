@@ -32,6 +32,7 @@ const uint8_t FEATURE_IFACE_TOUCHSCREEN_TYPE_A[] = {0x81,0xD8};  // feature mask
 const uint8_t FEATURE_IFACE_TOUCHSCREEN_TYPE_B[] = {0x81,0xD8};  // feature mask for touchscreen type b
 const uint8_t FEATURE_IFACE_NEXTION_TYPE_A[]     = {0x81,0xD8};  // feature mask for nextion type a
 const uint8_t FEATURE_IFACE_NEXTION_TYPE_B[]     = {0x81,0xD8};  // feature mask for nextion type b
+const uint8_t FEATURE_IFACE_6_AXIS_IMU[]         = {0x91,0x80};  // feature mask for 6-axis IMU
 const uint8_t FEATURE_IFACE_3X5_BUTTON_BOX[]     = {0x9F,0x80};  // feature mask for 3x5 button box
 const uint8_t FEATURE_IFACE_4x6_BUTTON_BOX[]     = {0xB1,0x80};  // feature mask for 4x6 button box
 const uint8_t FEATURE_DISP_ANALOG_LED_STRIP[]    = {0x81,0xE2};  // feature mask for analog led strip
