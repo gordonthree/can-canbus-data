@@ -4,6 +4,7 @@
 
 #define           FEATURE_MASK_SIZE     2 // size of feature mask in bytes
 #define           NODE_ID_SIZE          4 // node ID length in bytes
+#define           CAN_MAX_DLC           8 // maximum number of bytes in a legal CAN message
 
 // Define clear return values for various error conditions
 #define           NODE_NOT_FOUND        -1
