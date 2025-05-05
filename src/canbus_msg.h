@@ -147,20 +147,20 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_RFID_READ 0x507 // rfid read DLC 7
 #define DATA_CONTACT_CLOSED 0x508 // contact closed DLC 7
 #define DATA_CONTACT_OPENED 0x509 // contact opened DLC 7
-#define DATA_RESERVED 0x50A // reserved DLC 7
-#define DATA_INTERNAL_PCB_VOLTS 0x50B // internal pcb volts DLC 7
-#define DATA_INTERNAL_PCB_CURRENT 0x50C // internal pcb current DLC 7
-#define DATA_EXTERNAL_TEMP 0x50D // external temp DLC 7
-#define DATA_EXTERNAL_VOLTS 0x50E // external volts DLC 7
-#define DATA_EXTERNAL_CURRENT 0x50F // external current DLC 7
+#define DATA_INTERNAL_TEMPERATURE 0x50A // internal temperature DLC 8
+#define DATA_INTERNAL_PCB_VOLTS 0x50B // internal pcb volts DLC 8
+#define DATA_INTERNAL_PCB_CURRENT 0x50C // internal pcb current DLC 8
+#define DATA_EXTERNAL_TEMPERATURE 0x50D // external temperature DLC 8
+#define DATA_EXTERNAL_VOLTS 0x50E // external volts DLC 8
+#define DATA_EXTERNAL_CURRENT 0x50F // external current DLC 8
 #define DATA_AMBIENT_LIGHT 0x510 // ambient light DLC 7
-#define DATA_IMU_X_AXIS 0x511 // IMU X Axis DLC 7
-#define DATA_IMU_Y_AXIS 0x512 // IMU Y Axis DLC 7
-#define DATA_IMU_Z_AXIS 0x513 // IMU Z Axis DLC 7
-#define DATA_IMU_X_GYRO 0x514 // IMU X Gyro DLC 7
-#define DATA_IMU_Y_GYRO 0x515 // IMU Y Gyro DLC 7
-#define DATA_IMU_Z_GYRO 0x516 // IMU Z Gyro DLC 7
-#define DATA_RESERVED_527 0x517 // reserved 527 DLC 7
+#define DATA_IMU_X_AXIS 0x511 // IMU X Axis DLC 8
+#define DATA_IMU_Y_AXIS 0x512 // IMU Y Axis DLC 8
+#define DATA_IMU_Z_AXIS 0x513 // IMU Z Axis DLC 8
+#define DATA_IMU_X_GYRO 0x514 // IMU X Gyro DLC 8
+#define DATA_IMU_Y_GYRO 0x515 // IMU Y Gyro DLC 8
+#define DATA_IMU_Z_GYRO 0x516 // IMU Z Gyro DLC 8
+#define DATA_IMU_TEMPERATURE 0x517 // IMU temperature DLC 8
 #define DATA_RESERVED_528 0x518 // reserved 528 DLC 7
 #define DATA_OUTPUT_SWITCH_MOM_PUSH 0x519 // output switch mom push DLC 7
 #define DATA_NODE_CPU_TEMP 0x51A // node cpu temp DLC 6
@@ -219,8 +219,8 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define NODE_INT_CURRENT_SENSOR 0x728 // node int current sensor DLC 5
 #define INPUT_EXT_CURRENT_SHUNT 0x729 // input ext current shunt DLC 5
 #define INPUT_EXT_CURRENT_HALL 0x72A // input ext current hall DLC 5
-#define GPS_ALTITUDE 0x72B // GPS altitude DLC 5
-#define GPS_STATUS 0x72C // GPS status DLC 5
+#define SENSOR_RESERVED_72B 0x72B // sensor reserved 72b DLC 5
+#define SENSOR_RESERVED_72C 0x72C // sensor reserved 72c DLC 5
 #define SENSOR_RESERVED_72D 0x72D // sensor reserved 72d DLC 5
 #define SENSOR_RESERVED_72E 0x72E // sensor reserved 72e DLC 5
 #define SENSOR_RESERVED_72F 0x72F // sensor reserved 72f DLC 5
@@ -231,14 +231,14 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define IMU_X_GYRO_SENSOR 0x734 // IMU X Gyro sensor DLC 5
 #define IMU_Y_GYRO_SENSOR 0x735 // IMU Y Gyro sensor DLC 5
 #define IMU_Z_GYRO_SENSOR 0x736 // IMU Z Gyro sensor DLC 5
-#define GPS_UTC_TIME 0x737 // GPS utc time DLC 5
-#define GPS_LATITUDE 0x738 // GPS latitude DLC 
-#define GPS_NS_IND 0x739 // GPS NS IND DLC 
-#define GPS_LONGITUDE 0x73A // GPS longitude DLC 
-#define GPS_EW_IND 0x73B // GPS EW IND DLC 
-#define SENSOR2_RESERVED_73C 0x73C // sensor2 reserved 73c DLC 
-#define SENSOR2_RESERVED_73D 0x73D // sensor2 reserved 73d DLC 
-#define SENSOR2_RESERVED_73E 0x73E // sensor2 reserved 73e DLC 
+#define IMU_TEMP_SENSOR 0x737 // IMU temp sensor DLC 5
+#define GPS_UTC_TIME 0x738 // GPS utc time DLC 5
+#define GPS_LATITUDE 0x739 // GPS latitude DLC 5
+#define GPS_NS_IND 0x73A // GPS NS IND DLC 5
+#define GPS_LONGITUDE 0x73B // GPS longitude DLC 5
+#define GPS_EW_IND 0x73C // GPS EW IND DLC 5
+#define GPS_ALTITUDE 0x73D // GPS altitude DLC 5
+#define GPS_STATUS 0x73E // GPS status DLC 5
 #define SENSOR2_RESERVED_73F 0x73F // sensor2 reserved 73f DLC 
 #define OUT_HIGH_CURRENT_SW 0x740 // high current solid state switch DLC 6
 #define OUT_LOW_CURRENT_SW 0x741 // low current solid state switch DLC 6
