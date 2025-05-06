@@ -126,25 +126,25 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_RFID_READ 0x507                   // rfid read DLC 7
 #define DATA_CONTACT_CLOSED 0x508              // contact closed DLC 7
 #define DATA_CONTACT_OPENED 0x509              // contact opened DLC 7
-#define DATA_INTERNAL_TEMPERATURE_12BIT 0x50A  // internal temperature 12bit DLC 8
-#define DATA_INTERNAL_PCB_VOLTS_12BIT 0x50B    // internal pcb volts 12bit DLC 8
-#define DATA_INTERNAL_PCB_CURRENT_12BIT 0x50C  // internal pcb current 12bit DLC 8
-#define DATA_EXTERNAL_TEMPERATURE_12BIT 0x50D  // external temperature 12bit DLC 8
-#define DATA_EXTERNAL_VOLTS_12BIT 0x50E        // external volts 12bit DLC 8
-#define DATA_EXTERNAL_CURRENT_12BIT 0x50F      // external current 12bit DLC 8
-#define DATA_AMBIENT_LIGHT_USE_PRIV_MSG 0x510  // ambient light USE PRIV MSG DLC 7
-#define DATA_IMU_X_AXIS 0x511                  // IMU X Axis USE PRIV MSG DLC 8
-#define DATA_IMU_Y_AXIS 0x512                  // IMU Y Axis USE PRIV MSG DLC 8
-#define DATA_IMU_Z_AXIS 0x513                  // IMU Z Axis USE PRIV MSG DLC 8
-#define DATA_IMU_X_GYRO 0x514                  // IMU X Gyro USE PRIV MSG DLC 8
-#define DATA_IMU_Y_GYRO 0x515                  // IMU Y Gyro USE PRIV MSG DLC 8
-#define DATA_IMU_Z_GYRO 0x516                  // IMU Z Gyro USE PRIV MSG DLC 8
-#define DATA_IMU_TEMPERATURE_12BIT 0x517       // IMU temperature 12bit DLC 8
-#define DATA_ANALOG_KNOB_MV_12BIT 0x518        // analog knob mv 12bit DLC 7
+#define DATA_INTERNAL_TEMPERATURE 0x50A        // internal temperature DLC 7
+#define DATA_INTERNAL_PCB_VOLTS 0x50B          // internal pcb volts DLC 7
+#define DATA_INTERNAL_PCB_CURRENT 0x50C        // internal pcb current DLC 7
+#define DATA_EXTERNAL_TEMPERATURE 0x50D        // external temperature DLC 8
+#define DATA_EXTERNAL_VOLTS 0x50E              // external volts DLC 8
+#define DATA_EXTERNAL_CURRENT 0x50F            // external current DLC 8
+#define DATA_AMBIENT_LIGHT_USE_PRIV_MSG 0x510  // ambient light USE PRIV MSG DLC 5
+#define DATA_IMU_X_AXIS 0x511                  // IMU X Axis USE PRIV MSG DLC 5
+#define DATA_IMU_Y_AXIS 0x512                  // IMU Y Axis USE PRIV MSG DLC 5
+#define DATA_IMU_Z_AXIS 0x513                  // IMU Z Axis USE PRIV MSG DLC 5
+#define DATA_IMU_X_GYRO 0x514                  // IMU X Gyro USE PRIV MSG DLC 5
+#define DATA_IMU_Y_GYRO 0x515                  // IMU Y Gyro USE PRIV MSG DLC 5
+#define DATA_IMU_Z_GYRO 0x516                  // IMU Z Gyro USE PRIV MSG DLC 5
+#define DATA_IMU_TEMPERATURE 0x517             // IMU temperature DLC 8
+#define DATA_ANALOG_KNOB_MV 0x518              // analog knob mv DLC 7
 #define DATA_OUTPUT_SWITCH_MOM_PUSH 0x519      // output switch mom push DLC 7
-#define DATA_NODE_CPU_TEMP_12BIT 0x51A         // node cpu temp 12bit DLC 6
+#define DATA_NODE_CPU_TEMP 0x51A               // node cpu temp DLC 7
 #define DATA_NODE_LAST_BOOT_TIMESTAMP 0x51B    // node last boot timestamp DLC 8
-#define DATA_NODE_PCB_TEMP_12BIT 0x51C         // node pcb temp 12bit DLC 6
+#define DATA_NODE_PCB_TEMP 0x51C               // node pcb temp DLC 6
 #define DATA_OUTPUT_SWITCH_OFF 0x51D           // output switch off DLC 5
 #define DATA_OUTPUT_SWITCH_ON 0x51E            // output switch on DLC 5
 #define DATA_OUTPUT_SWITCH_MODE 0x51F          // output switch mode DLC 6
