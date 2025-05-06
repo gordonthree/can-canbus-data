@@ -20,7 +20,11 @@
 #define MODULE_NOT_FOUND      -10
 #define MODULE_ALREADY_EXISTS -3
 #define MODULE_LIST_FULL      -4
-
+#define MODULE_DISPLAY         0x700       // display modules 0x700:0x70F
+#define MODULE_INPUT           0x710       // physical input modules 0x710:0x71F
+#define MODULE_SENSORS1        0x720       // sensor modules group 2 0x720:0x72F
+#define MODULE_SENSORS2        0x730       // sensor modules group 2 0x730:0x73F
+#define MODULE_OUTPUTS         0x740       // output switches range 0x740:0x74F
 
 #define DATA_SIZE_8BITS        1           // one byte for 8 bits
 #define DATA_SIZE_12BITS       2           // two bytes for 12 bits
@@ -44,6 +48,8 @@
 #define MASK_REQ_INTRO         0x480       // address range 0x400:0x47F
 #define MSG_NODE_DATA          0x500       // nodes send data back to the controller
 #define MASK_NODE_DATA         0x580       // address range 0x500:0x57F
+
+
 
 #define OUT_MODE_ALWAYS_OFF    0x00        // output is disabled and always-off
 #define OUT_MODE_ALWAYS_ON     0x01        // output is disabled and always-on
