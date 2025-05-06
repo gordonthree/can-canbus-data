@@ -46,5 +46,21 @@
 #define MSG_NODE_DATA          0x500       // nodes send data back to the controller
 #define MASK_NODE_DATA         0x580       // address range 0x500:0x57F
 
+#define OUT_MODE_ALWAYS_OFF    0x00        // output is disabled and always-off
+#define OUT_MODE_ALWAYS_ON     0x01        // output is disabled and always-on
+#define OUT_MODE_TOGGLE        0x01        // output acts like a standard on/off switch
+#define OUT_MODE_MOMENTARY     0x02        // output acts like a momentary push button switch
+#define OUT_MODE_BLINKING      0x03        // output blinks on and off like a turn signal
+#define OUT_MODE_STROBE        0x04        // output strobes various timing patterns
+#define OUT_MODE_PWM           0x05        // output uses pulse width modulation 
+
+#define OUT_SAVE_STATE_OFF     0x01        // disable save output state (memory)
+#define OUT_SAVE_STATE_ON      0x01        // enable save output state (memory)
+
+#define STROBE_PATTERN_1       0x01        // repeating three flashes and a pause
+#define STROBE_PATTERN_2       0x02        // repeating 3x flash pause 5x flash pause
+#define STROBE_PATTERN_3       0x03        // tbd
+#define STROBE_PATTERN_4       0x04        // tbd
+#define STROBE_PATTERN_5       0x05        // tbd
 
 #endif // end CANBUS_DEFS_H
