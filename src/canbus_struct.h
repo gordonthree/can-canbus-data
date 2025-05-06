@@ -16,6 +16,18 @@ struct outputSwitch {
     time_t   lastSeen = 0;       // last time seen
   };
 
+  /* various sensors */
+  struct outputSensor {
+    bool     present         = false;       // flag indicating sensor presence
+    uint16_t sensorType      = 0;           // sensor type 
+    uint16_t sensorMsg       = 0;           // assigned by controller, private message number used to transfer 8 bytes of sensor data
+    uint8_t  featuresMask[2] = {0};         // feature mask
+    int32_t  i32Value        = 0;           // signed long int
+    float    fltValue        = 0.0;         // floating point
+    bool     useFloat        = false;       // flag directing node to send float value instead of the int32
+    time_t   lastUpdate      = 0;           // timestamp
+  };
+  
   /* IMU sensor data */
   struct imuDataType {
     float xaccel = 0.0;    
