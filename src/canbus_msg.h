@@ -191,6 +191,18 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_RESERVED_531 0x531              // 0x531 reserved private msg for 64-bit sensor data DLC 8
 #define DATA_RESERVED_532 0x532              // 0x532 reserved private msg for 64-bit sensor data DLC 8
 #define DATA_RESERVED_533 0x533              // 0x533 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_534 0x534              // 0x534 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_535 0x535              // 0x535 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_536 0x536              // 0x536 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_537 0x537              // 0x537 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_538 0x538              // 0x538 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_539 0x539              // 0x539 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53A 0x53A              // 0x53A reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53B 0x53B              // 0x53B reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53C 0x53C              // 0x53C reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53D 0x53D              // 0x53D reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53E 0x53E              // 0x53E reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_53F 0x53F              // 0x53F reserved private msg for 64-bit sensor data DLC 8
      
 #define DISP_ANALOG_LED_STRIP 0x700          // analog led strip DLC 8
 #define DISP_ARGBW_LED_STRIP 0x701           // argbw led strip DLC 8
