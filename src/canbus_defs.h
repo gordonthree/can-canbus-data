@@ -6,8 +6,10 @@
 #define UTC_OFFSET_DST         0
 
 // sizes for various byte-arrays
-#define FEATURE_MASK_SIZE      2           // size of feature mask in bytes
 #define NODE_ID_SIZE           4           // node ID length in bytes
+#define NODE_MOD_MAX_CNT       8           // maximum number of modules per node 
+#define NODE_MOD_MSG_SIZE      2           // enough room for an 11-bit message ID
+#define FEATURE_MASK_SIZE      2           // size of feature mask in bytes
 #define CAN_MAX_DLC            8           // maximum number of bytes in a legal CAN message
 
 // Define clear return values for various error conditions
@@ -19,9 +21,6 @@
 #define MODULE_ALREADY_EXISTS -3
 #define MODULE_LIST_FULL      -4
 
-#define MAX_SENSOR_CNT         8           // maximum number of sensors per node
-#define SENSOR_DATA_SIZE       8           // maximum bytes for sensor data 
-#define SENSOR_MSG_SIZE        2           // enough room for an 11-bit message ID
 
 #define DATA_SIZE_8BITS        1           // one byte for 8 bits
 #define DATA_SIZE_12BITS       2           // two bytes for 12 bits
