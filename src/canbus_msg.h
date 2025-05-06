@@ -181,120 +181,131 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_ARGB_BUTTON_COLOR 0x524         // argb button color DLC 7
 #define DATA_ARGB_BUTTON_LED_MODE 0x525      // argb button led mode DLC 7
 
-#define DISP_ANALOG_LED_STRIP 0x700     // analog led strip DLC 8
-#define DISP_ARGBW_LED_STRIP 0x701      // argbw led strip DLC 8
-#define DISP_ARGB_LED_STRIP 0x702       // argb led strip DLC 8
-#define DISP_RESERVED_703 0x703         // disp reserved 703 DLC 8
-#define DISP_RESERVED_704 0x704         // disp reserved 704 DLC 8
-#define DISP_OLED 0x705                 // non-touch oled display DLC 8
-#define DISP_RESERVED_706 0x706         // disp reserved 706 DLC 8
-#define DISP_LCD 0x707                  // non-touch lcd display DLC 8
-#define DISP_RESERVED_708 0x708         // disp reserved 708 DLC 
-#define DISP_RESERVED_709 0x709         // disp reserved 709 DLC 
-#define DISP_RESERVED_70A 0x70A         // disp reserved 70a DLC 
-#define DISP_RESERVED_70B 0x70B         // disp reserved 70b DLC 
-#define DISP_RESERVED_70C 0x70C         // disp reserved 70c DLC 
-#define DISP_RESERVED_70D 0x70D         // disp reserved 70d DLC 
-#define DISP_RESERVED_70E 0x70E         // disp reserved 70e DLC 
-#define DISP_RESERVED_70F 0x70F         // disp reserved 70f DLC 
-#define BUTTON_NO_BACKLIGHT 0x710       // button no backlight DLC 7
-#define BUTTON_ARGB_BACKLIGHT 0x711     // button argb backlight DLC 7
-#define BUTTON_ANALOG_BACKLIGHT 0x712   // button analog backlight DLC 7
-#define BUTTON_VIRTUAL 0x713            // button virtual DLC 7
-#define BUTTON_WITH_DISPLAY 0x714       // button with display DLC 7
-#define BUTTON_ANALOG_KNOB 0x715        // analog knob input DLC 7
-#define BUTTON_JOG_DIAL_CLICK 0x716     // jog dial with click DLC 7
-#define BUTTON_KEY_SWITCH 0x717         // key switch DLC 7
-#define BUTTON_MOTION_DET 0x718         // motion detector DLC 7
-#define BUTTON_CAP_TOUCH 0x719          // capacitive touch switch stand-alone DLC 
-#define BUTTON_JOG_DIAL_NOCLICK 0x71A   // jog dial without click DLC 7
-#define INPUT_RFID_READER 0x71B         // RFID reader input DLC 
-#define BUTTON_CONTACT_PULL_DOWN 0x71C  // button contact pull down DLC 
-#define BUTTON_CONTACT_PULL_UP 0x71D    // button contact pull up DLC 
-#define BUTTON_RESERVED_71E 0x71E       // button reserved 71e DLC 5
-#define BUTTON_RESERVED_71F 0x71F       // button reserved 71f DLC 5
-#define INPUT_DIGITAL_TEMP 0x720        // input digital temp DLC 5
-#define INPUT_K_TYPE_TEMP 0x721         // input k type temp DLC 5
-#define NODE_LASTBOOT 0x722             // last boot timestamp DLC 5
-#define NODE_PCB_TEMP 0x723             // node pcb temp DLC 5
-#define NODE_CPU_TEMP 0x724             // node cpu temp DLC 5
-#define INPUT_EXT_VOLTAGE_SENSOR 0x725  // input ext voltage sensor DLC 5
-#define NODE_INT_VOLTAGE_SENSOR 0x726   // node int voltage sensor DLC 5
-#define NODE_INT_CURRENT_SENSOR 0x727   // node int current sensor DLC 5
-#define INPUT_EXT_CURRENT_SHUNT 0x728   // input ext current shunt DLC 5
-#define INPUT_EXT_CURRENT_HALL 0x729    // input ext current hall DLC 5
-#define SENSOR_RESERVED_72A 0x72A       // sensor reserved 72a DLC 5
-#define SENSOR_RESERVED_72B 0x72B       // sensor reserved 72b DLC 5
-#define SENSOR_RESERVED_72C 0x72C       // sensor reserved 72c DLC 5
-#define SENSOR_RESERVED_72D 0x72D       // sensor reserved 72d DLC 5
-#define SENSOR_RESERVED_72E 0x72E       // sensor reserved 72e DLC 5
-#define SENSOR_RESERVED_72F 0x72F       // sensor reserved 72f DLC 5
-#define INPUT_AMBIENT_LIGHT 0x730       // input ambient light DLC 5
-#define IMU_X_AXIS_SENSOR 0x731         // IMU X Axis sensor DLC 5
-#define IMU_Y_AXIS_SENSOR 0x732         // IMU Y Axis sensor DLC 5
-#define IMU_Z_AXIS_SENSOR 0x733         // IMU Z Axis sensor DLC 5
-#define IMU_X_GYRO_SENSOR 0x734         // IMU X Gyro sensor DLC 5
-#define IMU_Y_GYRO_SENSOR 0x735         // IMU Y Gyro sensor DLC 5
-#define IMU_Z_GYRO_SENSOR 0x736         // IMU Z Gyro sensor DLC 5
-#define IMU_TEMP_SENSOR 0x737           // IMU temp sensor DLC 5
-#define GPS_UTC_TIME 0x738              // GPS utc time DLC 5
-#define GPS_LATITUDE 0x739              // GPS latitude DLC 5
-#define GPS_NS_IND 0x73A                // GPS NS IND DLC 5
-#define GPS_LONGITUDE 0x73B             // GPS longitude DLC 5
-#define GPS_EW_IND 0x73C                // GPS EW IND DLC 5
-#define GPS_ALTITUDE 0x73D              // GPS altitude DLC 5
-#define GPS_STATUS 0x73E                // GPS status DLC 5
-#define SENSOR2_RESERVED_73F 0x73F      // sensor2 reserved 73f DLC 
-#define OUT_HIGH_CURRENT_SW 0x740       // high current solid state switch DLC 6
-#define OUT_LOW_CURRENT_SW 0x741        // low current solid state switch DLC 6
-#define OUT_OPEN_DRAIN 0x742            // open drain output DLC 6
-#define OUT_MECH_RELAY 0x743            // mechanical relay DLC 6
-#define OUT_RESERVED_744 0x744          // out reserved 744 DLC 
-#define OUT_RESERVED_745 0x745          // out reserved 745 DLC 
-#define OUT_RESERVED_746 0x746          // out reserved 746 DLC 
-#define OUT_RESERVED_747 0x747          // out reserved 747 DLC 
-#define OUT_RESERVED_748 0x748          // out reserved 748 DLC 
-#define OUT_RESERVED_749 0x749          // out reserved 749 DLC 
-#define OUT_RESERVED_74A 0x74A          // out reserved 74a DLC 
-#define OUT_RESERVED_74B 0x74B          // out reserved 74b DLC 
-#define OUT_RESERVED_74C 0x74C          // out reserved 74c DLC 
-#define OUT_RESERVED_74D 0x74D          // out reserved 74d DLC 
-#define OUT_RESERVED_74E 0x74E          // out reserved 74e DLC 
-#define OUT_RESERVED_74F 0x74F          // out reserved 74f DLC 
-
-#define BOX_SW_3GANG 0x780              // 3 gang switch box, 2 high, 1 low DLC 6
-#define BOX_SW_4GANG 0x781              // 4-gang switch box, 2 high, 2 low DLC 6
-#define BOX_SW_6GANG_HIGH 0x782         // 6-gang switch box, 4 high, 2 low DLC 6
-#define BOX_SW_6GANG_LOW 0x783          // 6-gang switch box, 2 high, 4 low DLC 6
-#define BOX_SW_2GANG_HIGH 0x784         // 2-gang switch box, 2 high DLC 6
-#define BOX_SW_2GANG_LOW 0x785          // 2-gang switch box, 2 low DLC 6
-#define BOX_MULTI_4XTEMP 0x786          // 4-digital multi temp input box DLC 6
-#define BOX_SW_4RELAY 0x787             // 4-gang relay output box DLC 6
-#define BOX_MULTI_TVA 0x788             // temp, volt, current input box DLC 6
-#define BOX_SW_8RELAY 0x789             // 8-gang relay output box DLC 6
-#define BOX_MULTI_4X4IO 0x78A           // input - output box, 4 in, 4 out DLC 6
-#define BOX_RESERVED_78B 0x78B          // box reserved 78b DLC 6
-#define BOX_RESERVED_78C 0x78C          // box reserved 78c DLC 6
-#define BOX_RESERVED_78D 0x78D          // box reserved 78d DLC 6
-#define BOX_RESERVED_78E 0x78E          // box reserved 78e DLC 6
-#define BOX_RESERVED_78F 0x78F          // box reserved 78f DLC 6
-#define IFACE_8X4_ARGB_KEYPAD 0x790     // 8x4 argb keypad DLC 6
-#define IFACE_4X4_ARGB_KEYPAD 0x791     // 4x4 argb keypad DLC 6
-#define IFACE_TOUCHSCREEN_TYPE_A 0x792  // touchscreen type a DLC 6
-#define IFACE_TOUCHSCREEN_TYPE_B 0x793  // touchscreen type b DLC 6
-#define IFACE_NEXTION_TYPE_A 0x794      // nextion type a DLC 6
-#define IFACE_NEXTION_TYPE_B 0x795      // nextion type b DLC 6
-#define IFACE_RESERVED_796 0x796        // iface reserved 796 DLC 6
-#define IFACE_RESERVED_797 0x797        // iface reserved 797 DLC 6
-#define IFACE_RESERVED_798 0x798        // iface reserved 798 DLC 
-#define IFACE_6_AXIS_IMU 0x799          // 6 axis imu DLC 6
-#define IFACE_3X5_BUTTON_BOX 0x79A      // 3x5 button box DLC 6
-#define IFACE_4X6_BUTTON_BOX 0x79B      // 4x6 button box DLC 6
-#define IFACE_RESERVED_79C 0x79C        // iface reserved 79c DLC 
-#define IFACE_RESERVED_79D 0x79D        // iface reserved 79d DLC 
-#define IFACE_RESERVED_79E 0x79E        // iface reserved 79e DLC 
-#define IFACE_RESERVED_79F 0x79F        // iface reserved 79f DLC 
-
-// ======================= CUT HERE FOR SHEETS RESYNC ==========================
-
-#endif
+#define DATA_RESERVED_52A 0x52A              // 0x52A reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_52B 0x52B              // 0x52B reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_52C 0x52C              // 0x52C reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_52D 0x52D              // 0x52D reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_52E 0x52E              // 0x52E reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_52F 0x52F              // 0x52F reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_530 0x530              // 0x530 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_531 0x531              // 0x531 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_532 0x532              // 0x532 reserved private msg for 64-bit sensor data DLC 8
+#define DATA_RESERVED_533 0x533              // 0x533 reserved private msg for 64-bit sensor data DLC 8
+     
+#define DISP_ANALOG_LED_STRIP 0x700          // analog led strip DLC 8
+#define DISP_ARGBW_LED_STRIP 0x701           // argbw led strip DLC 8
+#define DISP_ARGB_LED_STRIP 0x702            // argb led strip DLC 8
+#define DISP_RESERVED_703 0x703              // disp reserved 703 DLC 8
+#define DISP_RESERVED_704 0x704              // disp reserved 704 DLC 8
+#define DISP_OLED 0x705                      // non-touch oled display DLC 8
+#define DISP_RESERVED_706 0x706              // disp reserved 706 DLC 8
+#define DISP_LCD 0x707                       // non-touch lcd display DLC 8
+#define DISP_RESERVED_708 0x708              // disp reserved 708 DLC 
+#define DISP_RESERVED_709 0x709              // disp reserved 709 DLC 
+#define DISP_RESERVED_70A 0x70A              // disp reserved 70a DLC 
+#define DISP_RESERVED_70B 0x70B              // disp reserved 70b DLC 
+#define DISP_RESERVED_70C 0x70C              // disp reserved 70c DLC 
+#define DISP_RESERVED_70D 0x70D              // disp reserved 70d DLC 
+#define DISP_RESERVED_70E 0x70E              // disp reserved 70e DLC 
+#define DISP_RESERVED_70F 0x70F              // disp reserved 70f DLC 
+#define BUTTON_NO_BACKLIGHT 0x710            // button no backlight DLC 7
+#define BUTTON_ARGB_BACKLIGHT 0x711          // button argb backlight DLC 7
+#define BUTTON_ANALOG_BACKLIGHT 0x712        // button analog backlight DLC 7
+#define BUTTON_VIRTUAL 0x713                 // button virtual DLC 7
+#define BUTTON_WITH_DISPLAY 0x714            // button with display DLC 7
+#define BUTTON_ANALOG_KNOB 0x715             // analog knob input DLC 7
+#define BUTTON_JOG_DIAL_CLICK 0x716          // jog dial with click DLC 7
+#define BUTTON_KEY_SWITCH 0x717              // key switch DLC 7
+#define BUTTON_MOTION_DET 0x718              // motion detector DLC 7
+#define BUTTON_CAP_TOUCH 0x719               // capacitive touch switch stand-alone DLC 
+#define BUTTON_JOG_DIAL_NOCLICK 0x71A        // jog dial without click DLC 7
+#define INPUT_RFID_READER 0x71B              // RFID reader input DLC 
+#define BUTTON_CONTACT_PULL_DOWN 0x71C       // button contact pull down DLC 
+#define BUTTON_CONTACT_PULL_UP 0x71D         // button contact pull up DLC 
+#define BUTTON_RESERVED_71E 0x71E            // button reserved 71e DLC 5
+#define BUTTON_RESERVED_71F 0x71F            // button reserved 71f DLC 5
+#define INPUT_DIGITAL_TEMP 0x720             // input digital temp DLC 5
+#define INPUT_K_TYPE_TEMP 0x721              // input k type temp DLC 5
+#define NODE_LASTBOOT 0x722                  // last boot timestamp DLC 5
+#define NODE_PCB_TEMP 0x723                  // node pcb temp DLC 5
+#define NODE_CPU_TEMP 0x724                  // node cpu temp DLC 5
+#define INPUT_EXT_VOLTAGE_SENSOR 0x725       // input ext voltage sensor DLC 5
+#define NODE_INT_VOLTAGE_SENSOR 0x726        // node int voltage sensor DLC 5
+#define NODE_INT_CURRENT_SENSOR 0x727        // node int current sensor DLC 5
+#define INPUT_EXT_CURRENT_SHUNT 0x728        // input ext current shunt DLC 5
+#define INPUT_EXT_CURRENT_HALL 0x729         // input ext current hall DLC 5
+#define SENSOR_RESERVED_72A 0x72A            // sensor reserved 72a DLC 5
+#define SENSOR_RESERVED_72B 0x72B            // sensor reserved 72b DLC 5
+#define SENSOR_RESERVED_72C 0x72C            // sensor reserved 72c DLC 5
+#define SENSOR_RESERVED_72D 0x72D            // sensor reserved 72d DLC 5
+#define SENSOR_RESERVED_72E 0x72E            // sensor reserved 72e DLC 5
+#define SENSOR_RESERVED_72F 0x72F            // sensor reserved 72f DLC 5
+#define INPUT_AMBIENT_LIGHT 0x730            // input ambient light DLC 5
+#define IMU_X_AXIS_SENSOR 0x731              // IMU X Axis sensor DLC 5
+#define IMU_Y_AXIS_SENSOR 0x732              // IMU Y Axis sensor DLC 5
+#define IMU_Z_AXIS_SENSOR 0x733              // IMU Z Axis sensor DLC 5
+#define IMU_X_GYRO_SENSOR 0x734              // IMU X Gyro sensor DLC 5
+#define IMU_Y_GYRO_SENSOR 0x735              // IMU Y Gyro sensor DLC 5
+#define IMU_Z_GYRO_SENSOR 0x736              // IMU Z Gyro sensor DLC 5
+#define IMU_TEMP_SENSOR 0x737                // IMU temp sensor DLC 5
+#define GPS_UTC_TIME 0x738                   // GPS utc time DLC 5
+#define GPS_LATITUDE 0x739                   // GPS latitude DLC 5
+#define GPS_NS_IND 0x73A                     // GPS NS IND DLC 5
+#define GPS_LONGITUDE 0x73B                  // GPS longitude DLC 5
+#define GPS_EW_IND 0x73C                     // GPS EW IND DLC 5
+#define GPS_ALTITUDE 0x73D                   // GPS altitude DLC 5
+#define GPS_STATUS 0x73E                     // GPS status DLC 5
+#define SENSOR2_RESERVED_73F 0x73F           // sensor2 reserved 73f DLC 
+#define OUT_HIGH_CURRENT_SW 0x740            // high current solid state switch DLC 6
+#define OUT_LOW_CURRENT_SW 0x741             // low current solid state switch DLC 6
+#define OUT_OPEN_DRAIN 0x742                 // open drain output DLC 6
+#define OUT_MECH_RELAY 0x743                 // mechanical relay DLC 6
+#define OUT_RESERVED_744 0x744               // out reserved 744 DLC 
+#define OUT_RESERVED_745 0x745               // out reserved 745 DLC 
+#define OUT_RESERVED_746 0x746               // out reserved 746 DLC 
+#define OUT_RESERVED_747 0x747               // out reserved 747 DLC 
+#define OUT_RESERVED_748 0x748               // out reserved 748 DLC 
+#define OUT_RESERVED_749 0x749               // out reserved 749 DLC 
+#define OUT_RESERVED_74A 0x74A               // out reserved 74a DLC 
+#define OUT_RESERVED_74B 0x74B               // out reserved 74b DLC 
+#define OUT_RESERVED_74C 0x74C               // out reserved 74c DLC 
+#define OUT_RESERVED_74D 0x74D               // out reserved 74d DLC 
+#define OUT_RESERVED_74E 0x74E               // out reserved 74e DLC 
+#define OUT_RESERVED_74F 0x74F               // out reserved 74f DLC 
+     
+#define BOX_SW_3GANG 0x780                   // 3 gang switch box, 2 high, 1 low DLC 6
+#define BOX_SW_4GANG 0x781                   // 4-gang switch box, 2 high, 2 low DLC 6
+#define BOX_SW_6GANG_HIGH 0x782              // 6-gang switch box, 4 high, 2 low DLC 6
+#define BOX_SW_6GANG_LOW 0x783               // 6-gang switch box, 2 high, 4 low DLC 6
+#define BOX_SW_2GANG_HIGH 0x784              // 2-gang switch box, 2 high DLC 6
+#define BOX_SW_2GANG_LOW 0x785               // 2-gang switch box, 2 low DLC 6
+#define BOX_MULTI_4XTEMP 0x786               // 4-digital multi temp input box DLC 6
+#define BOX_SW_4RELAY 0x787                  // 4-gang relay output box DLC 6
+#define BOX_MULTI_TVA 0x788                  // temp, volt, current input box DLC 6
+#define BOX_SW_8RELAY 0x789                  // 8-gang relay output box DLC 6
+#define BOX_MULTI_4X4IO 0x78A                // input - output box, 4 in, 4 out DLC 6
+#define BOX_MULTI_IO 0x78B                   // input - output box, multiple options DLC 6
+#define BOX_RESERVED_78C 0x78C               // box reserved 78c DLC 6
+#define BOX_RESERVED_78D 0x78D               // box reserved 78d DLC 6
+#define BOX_RESERVED_78E 0x78E               // box reserved 78e DLC 6
+#define BOX_RESERVED_78F 0x78F               // box reserved 78f DLC 6
+#define IFACE_8X4_ARGB_KEYPAD 0x790          // 8x4 argb keypad DLC 6
+#define IFACE_4X4_ARGB_KEYPAD 0x791          // 4x4 argb keypad DLC 6
+#define IFACE_TOUCHSCREEN_TYPE_A 0x792       // touchscreen type a DLC 6
+#define IFACE_TOUCHSCREEN_TYPE_B 0x793       // touchscreen type b DLC 6
+#define IFACE_NEXTION_TYPE_A 0x794           // nextion type a DLC 6
+#define IFACE_NEXTION_TYPE_B 0x795           // nextion type b DLC 6
+#define IFACE_RESERVED_796 0x796             // iface reserved 796 DLC 6
+#define IFACE_RESERVED_797 0x797             // iface reserved 797 DLC 6
+#define IFACE_RESERVED_798 0x798             // iface reserved 798 DLC 
+#define IFACE_6_AXIS_IMU 0x799               // 6 axis imu DLC 6
+#define IFACE_3X5_BUTTON_BOX 0x79A           // 3x5 button box DLC 6
+#define IFACE_4X6_BUTTON_BOX 0x79B           // 4x6 button box DLC 6
+#define IFACE_RESERVED_79C 0x79C             // iface reserved 79c DLC 
+#define IFACE_RESERVED_79D 0x79D             // iface reserved 79d DLC 
+#define IFACE_RESERVED_79E 0x79E             // iface reserved 79e DLC 
+#define IFACE_RESERVED_79F 0x79F             // iface reserved 79f DLC 
+     
+// ======================= CUT HERE FOR      SHEETS RESYNC ==========================
+     
+#endif     
