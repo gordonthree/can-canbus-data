@@ -21,7 +21,7 @@
 #define MODULE_ALREADY_EXISTS -3
 #define MODULE_LIST_FULL      -4
 #define MODULE_DISPLAY         0x700       // display modules 0x700:0x70F
-#define MODULE_INPUT           0x710       // physical input modules 0x710:0x71F
+#define MODULE_INPUTS          0x710       // physical input modules 0x710:0x71F
 #define MODULE_SENSORS1        0x720       // sensor modules group 2 0x720:0x72F
 #define MODULE_SENSORS2        0x730       // sensor modules group 2 0x730:0x73F
 #define MODULE_OUTPUTS         0x740       // output switches range 0x740:0x74F
