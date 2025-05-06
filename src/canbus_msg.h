@@ -116,44 +116,44 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define REQ_AMBIENT_LIGHT 0x417  // req ambient light sensors DLC 4
 #define REQ_IMU_SENSORS 0x418    // req imu sensors DLC 4
 
-#define DATA_BUTTON_DOWN 0x500               // button down DLC 7
-#define DATA_BUTTON_UP 0x501                 // button up DLC 7
-#define DATA_KEYSWITCH_LOCK 0x502            // keyswitch lock DLC 7
-#define DATA_KEYSWITCH_UNLOCK 0x503          // keyswitch unlock DLC 7
-#define DATA_KNOB_CLOCKWISE 0x504            // knob clockwise DLC 7
-#define DATA_KNOB_COUNTER_CLOCKWISE 0x505    // knob counter clockwise DLC 7
-#define DATA_KNOB_CLICK 0x506                // knob click DLC 7
-#define DATA_RFID_READ 0x507                 // rfid read DLC 7
-#define DATA_CONTACT_CLOSED 0x508            // contact closed DLC 7
-#define DATA_CONTACT_OPENED 0x509            // contact opened DLC 7
-#define DATA_INTERNAL_TEMPERATURE 0x50A      // internal temperature DLC 8
-#define DATA_INTERNAL_PCB_VOLTS 0x50B        // internal pcb volts DLC 8
-#define DATA_INTERNAL_PCB_CURRENT 0x50C      // internal pcb current DLC 8
-#define DATA_EXTERNAL_TEMPERATURE 0x50D      // external temperature DLC 8
-#define DATA_EXTERNAL_VOLTS 0x50E            // external volts DLC 8
-#define DATA_EXTERNAL_CURRENT 0x50F          // external current DLC 8
-#define DATA_AMBIENT_LIGHT 0x510             // ambient light DLC 7
-#define DATA_IMU_X_AXIS 0x511                // IMU X Axis DLC 8
-#define DATA_IMU_Y_AXIS 0x512                // IMU Y Axis DLC 8
-#define DATA_IMU_Z_AXIS 0x513                // IMU Z Axis DLC 8
-#define DATA_IMU_X_GYRO 0x514                // IMU X Gyro DLC 8
-#define DATA_IMU_Y_GYRO 0x515                // IMU Y Gyro DLC 8
-#define DATA_IMU_Z_GYRO 0x516                // IMU Z Gyro DLC 8
-#define DATA_IMU_TEMPERATURE 0x517           // IMU temperature DLC 8
-#define DATA_RESERVED_528 0x518              // reserved 528 DLC 7
-#define DATA_OUTPUT_SWITCH_MOM_PUSH 0x519    // output switch mom push DLC 7
-#define DATA_NODE_CPU_TEMP 0x51A             // node cpu temp DLC 6
-#define DATA_NODE_LAST_BOOT_TIMESTAMP 0x51B  // node last boot timestamp DLC 8
-#define DATA_NODE_PCB_TEMP 0x51C             // node pcb temp DLC 6
-#define DATA_OUTPUT_SWITCH_OFF 0x51D         // output switch off DLC 5
-#define DATA_OUTPUT_SWITCH_ON 0x51E          // output switch on DLC 5
-#define DATA_OUTPUT_SWITCH_MODE 0x51F        // output switch mode DLC 6
-#define DATA_DISPLAY_OFF 0x520               // display off DLC 5
-#define DATA_DISPLAY_ON 0x521                // display on DLC 5
-#define DATA_DISPLAY_CLEAR 0x522             // display clear DLC 5
-#define DATA_DISPLAY_FLASHING 0x523          // display flashing DLC 6
-#define DATA_ARGB_BUTTON_COLOR 0x524         // argb button color DLC 7
-#define DATA_ARGB_BUTTON_LED_MODE 0x525      // argb button led mode DLC 7
+#define DATA_BUTTON_DOWN 0x500                 // button down DLC 7
+#define DATA_BUTTON_UP 0x501                   // button up DLC 7
+#define DATA_KEYSWITCH_LOCK 0x502              // keyswitch lock DLC 7
+#define DATA_KEYSWITCH_UNLOCK 0x503            // keyswitch unlock DLC 7
+#define DATA_DIAL_CLOCKWISE 0x504              // dial clockwise DLC 7
+#define DATA_DIAL_COUNTER_CLOCKWISE 0x505      // dial counter clockwise DLC 7
+#define DATA_DIAL_CLICK 0x506                  // dial click DLC 7
+#define DATA_RFID_READ 0x507                   // rfid read DLC 7
+#define DATA_CONTACT_CLOSED 0x508              // contact closed DLC 7
+#define DATA_CONTACT_OPENED 0x509              // contact opened DLC 7
+#define DATA_INTERNAL_TEMPERATURE_12BIT 0x50A  // internal temperature 12bit DLC 8
+#define DATA_INTERNAL_PCB_VOLTS_12BIT 0x50B    // internal pcb volts 12bit DLC 8
+#define DATA_INTERNAL_PCB_CURRENT_12BIT 0x50C  // internal pcb current 12bit DLC 8
+#define DATA_EXTERNAL_TEMPERATURE_12BIT 0x50D  // external temperature 12bit DLC 8
+#define DATA_EXTERNAL_VOLTS_12BIT 0x50E        // external volts 12bit DLC 8
+#define DATA_EXTERNAL_CURRENT_12BIT 0x50F      // external current 12bit DLC 8
+#define DATA_AMBIENT_LIGHT_USE_PRIV_MSG 0x510  // ambient light USE PRIV MSG DLC 7
+#define DATA_IMU_X_AXIS 0x511                  // IMU X Axis USE PRIV MSG DLC 8
+#define DATA_IMU_Y_AXIS 0x512                  // IMU Y Axis USE PRIV MSG DLC 8
+#define DATA_IMU_Z_AXIS 0x513                  // IMU Z Axis USE PRIV MSG DLC 8
+#define DATA_IMU_X_GYRO 0x514                  // IMU X Gyro USE PRIV MSG DLC 8
+#define DATA_IMU_Y_GYRO 0x515                  // IMU Y Gyro USE PRIV MSG DLC 8
+#define DATA_IMU_Z_GYRO 0x516                  // IMU Z Gyro USE PRIV MSG DLC 8
+#define DATA_IMU_TEMPERATURE_12BIT 0x517       // IMU temperature 12bit DLC 8
+#define DATA_ANALOG_KNOB_MV_12BIT 0x518        // analog knob mv 12bit DLC 7
+#define DATA_OUTPUT_SWITCH_MOM_PUSH 0x519      // output switch mom push DLC 7
+#define DATA_NODE_CPU_TEMP_12BIT 0x51A         // node cpu temp 12bit DLC 6
+#define DATA_NODE_LAST_BOOT_TIMESTAMP 0x51B    // node last boot timestamp DLC 8
+#define DATA_NODE_PCB_TEMP_12BIT 0x51C         // node pcb temp 12bit DLC 6
+#define DATA_OUTPUT_SWITCH_OFF 0x51D           // output switch off DLC 5
+#define DATA_OUTPUT_SWITCH_ON 0x51E            // output switch on DLC 5
+#define DATA_OUTPUT_SWITCH_MODE 0x51F          // output switch mode DLC 6
+#define DATA_DISPLAY_OFF 0x520                 // display off DLC 5
+#define DATA_DISPLAY_ON 0x521                  // display on DLC 5
+#define DATA_DISPLAY_CLEAR 0x522               // display clear DLC 5
+#define DATA_DISPLAY_MODE 0x523                // display mode DLC 6
+#define DATA_ARGB_BUTTON_COLOR 0x524           // argb button color DLC 7
+#define DATA_ARGB_BUTTON_LED_MODE 0x525        // argb button led mode DLC 7
 
 #define DATA_RESERVED_52A 0x52A              // 0x52A reserved private msg for 64-bit sensor data DLC 8
 #define DATA_RESERVED_52B 0x52B              // 0x52B reserved private msg for 64-bit sensor data DLC 8

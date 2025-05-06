@@ -20,11 +20,12 @@ struct outputSwitch {
   struct outputSensor {
     bool     present         = false;       // flag indicating sensor presence
     uint16_t sensorType      = 0;           // sensor type 
-    uint16_t sensorMsg       = 0;           // assigned by controller, private message number used to transfer 8 bytes of sensor data
+    uint16_t sensorMsg       = 0;           // send our data using this message id
+    bool     privMsg         = false;       // set to true when controller assigns us a private msg channel
     uint8_t  featuresMask[2] = {0};         // feature mask
     int32_t  i32Value        = 0;           // signed long int
     float    fltValue        = 0.0;         // floating point
-    bool     useFloat        = false;       // flag directing node to send float value instead of the int32
+    uint8_t  dataSize        = 4;           // how many bytes is the data, more than 4 requires a private message
     time_t   lastUpdate      = 0;           // timestamp
   };
   
