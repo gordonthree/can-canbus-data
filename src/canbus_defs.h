@@ -23,6 +23,13 @@
 #define SENSOR_DATA_SIZE       8           // maximum bytes for sensor data 
 #define SENSOR_MSG_SIZE        2           // enough room for an 11-bit message ID
 
+#define DATA_SIZE_8BITS        1           // one byte for 8 bits
+#define DATA_SIZE_12BITS       2           // two bytes for 12 bits
+#define DATA_SIZE_16BITS       2           // two bytes for 16 bits
+#define DATA_SIZE_24BITS       3           // three bytes for 24 bits
+#define DATA_SIZE_32BITS       4           // four bytes for 32 bit values
+#define DATA_SIZE_64BITS       8           // eight bytes for float as string and other big data types
+
 #define ACCEPT_CODE            0x13F       // 0001 0011 1111 
 #define ACCEPT_MASK            0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
                  
