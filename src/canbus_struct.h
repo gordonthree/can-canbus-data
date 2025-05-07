@@ -85,6 +85,7 @@ struct outputSwitch {
     struct    {                                         /** storage for sub modules */
                 uint16_t modType         = 0;           /** 11-bit message id that defines module type, used for introduction  */
                 uint8_t  featuresMask[2] = {0,0};       /** feature mask to send with introduction  */
+                bool     sendFeatureMask = false;       /** send feature mask during introduction */
                 uint16_t txMsgID         = 0;           /** module sends data using this message id  */
                 bool     privMsg         = false;       /** flag indicating txMsgID is a private channel  */
                 uint8_t  u8Value         = 0;           /** byte data field use for switch state or sensor data  */
