@@ -1,6 +1,14 @@
 #ifndef CANBUS_STRUCT_H
 #define CANBUS_STRUCT_H
 
+#ifndef CANBUS_DEFS_H
+#include "canbus_defs.h"
+#endif
+
+#ifndef CANBUS_FLAGS_H
+#include "canbus_flags.h"
+#endif
+
 /* output switches */
 struct outputSwitch {  
     uint8_t  swState = 0;          // switch state on, off, momentary
@@ -70,11 +78,11 @@ struct outputSwitch {
     uint16_t  nodeType             = 0;                 /**  11-bit message id that defines the node type, used for introduction, set to 0 if node not present */
     uint8_t   nodeID[NODE_ID_SIZE] = {0,0,0,0};         /**  unique 32-bit node id number */
     uint8_t   featureMask[2]       = {0,0};             /**  two bytes of data to send with node introduction (optional) */
-    uint8_t   subModCNT            = 0;                 /**  sub module count */
+    uint8_t   subModCnt            = 0;                 /**  sub module count */
     time_t    lastSeen             = 0;                 /**  last time a message was received from node  */
     time_t    firstSeen            = 0;                 /**  first time message received from node */
     
-    struct    {                                         /** storage for sub modules
+    struct    {                                         /** storage for sub modules */
                 uint16_t modType         = 0;           /** 11-bit message id that defines module type, used for introduction  */
                 uint8_t  featuresMask[2] = {0,0};       /** feature mask to send with introduction  */
                 uint16_t txMsgID         = 0;           /** module sends data using this message id  */
