@@ -85,7 +85,7 @@ struct outputSwitch {
     struct    {                                         /** Storage for sub modules. */
                 uint16_t modType         = 0;           /** 11-bit message id that defines module type, used for introduction.  */
                 uint8_t  modCount        = 0;           /** Number of modules associated with the current modType. This information might be included in the feature mask. */
-                uint8_t  featuresMask[2] = {0,0};       /** Feature mask to send with introduction.  */
+                uint8_t  featureMask[2] = {0,0};       /** Feature mask to send with introduction.  */
                 bool     sendFeatureMask = false;       /** Send feature mask during introduction. */
                 uint16_t txMsgID         = 0;           /** Module sends data using this message id.  */
                 bool     privMsg         = false;       /** Flag indicating txMsgID is a private channel.  */
