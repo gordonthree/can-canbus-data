@@ -145,8 +145,8 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
 #define DATA_NODE_CPU_TEMP 0x51A               // node cpu temp DLC 7
 #define DATA_NODE_LAST_BOOT_TIMESTAMP 0x51B    // node last boot timestamp DLC 8
 #define DATA_NODE_PCB_TEMP 0x51C               // node pcb temp DLC 6
-#define DATA_OUTPUT_SWITCH_OFF 0x51D           // output switch off DLC 5
-#define DATA_OUTPUT_SWITCH_ON 0x51E            // output switch on DLC 5
+#define DATA_OUTPUT_SWITCH_STATE 0x51D         // output switch off DLC 5
+#define DATA_RESERVED_51E 0x51E                // data reserved 51e DLC 5
 #define DATA_OUTPUT_SWITCH_MODE 0x51F          // output switch mode DLC 6
 #define DATA_DISPLAY_OFF 0x520                 // display off DLC 5
 #define DATA_DISPLAY_ON 0x521                  // display on DLC 5
