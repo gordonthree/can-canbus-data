@@ -37,7 +37,7 @@
 #define ACCEPT_MASK            0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
                  
 #define NODE_MOD_MASK          0x780       // 0x700 to 0x77F are sub modules, 0x780 and above are remote nodes
-#define ADDR_FIRST_NODE        0x780       // first valiud address for remote nodes
+#define ADDR_FIRST_NODE        0x780       // first valid address for remote nodes
 #define ADDR_FIRST_MODULE      0x700       // first valid address for sub modules
 #define ADDR_LAST_MODULE       0x7FF       // last valid address for sub modules
            
@@ -57,6 +57,7 @@
 #define OUT_STATE_BLINKING     0x04        // output is blinking
 #define OUT_STATE_STROBE       0x05        // output is strobing
 #define OUT_STATE_PWM          0x06        // output is pwm
+#define OUT_STATE_INVALID      0xFF        // invalid output state
 
 #define OUT_MODE_ALWAYS_OFF    0x00        // output is disabled and always-off
 #define OUT_MODE_ALWAYS_ON     0x01        // output is disabled and always-on
@@ -65,6 +66,7 @@
 #define OUT_MODE_BLINKING      0x04        // output blinks on and off like a turn signal
 #define OUT_MODE_STROBE        0x05        // output strobes various timing patterns
 #define OUT_MODE_PWM           0x06        // output uses pulse width modulation 
+#define OUT_MODE_INVALID       0xFF        // invalid output mode
 
 #define OUT_SAVE_STATE_OFF     0x01        // disable save output state (memory)
 #define OUT_SAVE_STATE_ON      0x01        // enable save output state (memory)
