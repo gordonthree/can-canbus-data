@@ -33,7 +33,7 @@
 #define DATA_SIZE_32BITS       4           // four bytes for 32 bit values
 #define DATA_SIZE_64BITS       8           // eight bytes for float as string and other big data types
 
-#define ACCEPT_CODE            0x13F       // 0001 0011 1111 
+#define MASK_BITS_11_TO_8      0x780       /** 0111 1000 0000 */
 #define ACCEPT_MASK            0xFFE00000  // 1111 1111 1110 0000 0000 0000 0000 0000
                  
 #define NODE_MOD_MASK          0x780       // 0x700 to 0x77F are sub modules, 0x780 and above are remote nodes
