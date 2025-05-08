@@ -6,6 +6,29 @@
 namespace ByteConversion {
 
 /**
+ * @brief Concatenate arrays to build a data packet for sending with a CAN message.
+ *        All parameters are required.
+ * 
+ * @param arr1 uint8_t* Typically containing the 4-byte node id we are sending from or to.
+ * @param n1 uint8_t The size of the elements contained in arr1. 
+ * @usage example: uint8_t n1 = sizeof(arr1) / sizeof(arr1[0]);
+ * @param arr2 uint8_t* Typically containing four more bytes to send along with the node id.
+ * @param n2 uint8_t The size of the elements contained in arr2.
+ * 
+ * @returns uint8_t* Array containing the merged contents of arr1 and arr2.
+ * 
+ */
+uint8_t* messageBuilder(uint8_t arr1[], uint8_t n1, uint8_t arr2[], uint8_t n2) {
+  uint8_t *buf = (u_int8_t*)malloc(sizeof(uint8_t) * n1 * n2);
+
+  memcpy(buf, arr1, n1 * sizeof(uint8_t)); // copy the first array to the buffer
+
+  memcpy(buf + n1, arr2, n2 * sizeof(uint8_t)); // copy the second array to the buffer
+
+  return buf; // that's all folks return complete array
+}
+
+/**
  * @brief Convert a 4-byte array into a 32-bit unsigned integer.
  *
  * This function takes a pointer to an array of 4 bytes and combines them
