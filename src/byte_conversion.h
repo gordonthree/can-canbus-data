@@ -20,7 +20,7 @@ namespace ByteConversion {
  * 
  * @param arr1 uint8_t* Typically containing the 4-byte node id we are sending from or to.
  * @param n1 uint8_t The size of the elements contained in arr1. 
- * @usage example: uint8_t n1 = sizeof(arr1) / sizeof(arr1[0]);
+ * @note example: uint8_t n1 = sizeof(arr1) / sizeof(arr1[0]);
  * @param arr2 uint8_t* Typically containing four more bytes to send along with the node id.
  * @param n2 uint8_t The size of the elements contained in arr2.
  * 
@@ -65,7 +65,7 @@ inline uint32_t unchunk32(const uint8_t* dataBytes) {
  * into a single 16-bit unsigned integer, assuming network byte order
  * (big-endian format).
  *
- * @param dataBytes Pointer to the array of 2 bytes.
+ * @param dataBytes Pointer to the array of bytes.
  * @return uint16_t 16-bit unsigned integer representation of the byte array.
  *                  Returns 0 if the input pointer is null.
  */
@@ -84,7 +84,7 @@ inline uint16_t unchunk16(const uint8_t* dataBytes) {
  * array, with the bytes in network byte order (big-endian format).
  *
  * @param inVal The 32-bit unsigned integer to convert.
- * @param outArray Pointer to a 4-byte array where the result will be stored.
+ * @return 4-byte array representing the input value.
  */
 inline void chunk32(uint32_t inVal, uint8_t* outArray) {
   if (outArray != nullptr) {
@@ -102,7 +102,7 @@ inline void chunk32(uint32_t inVal, uint8_t* outArray) {
  * array, with the bytes in network byte order (big-endian format).
  *
  * @param inVal The 16-bit unsigned integer to convert.
- * @param outArray Pointer to a 2-byte array where the result will be stored.
+ * @return 2-byte array representing the input value. 
  */
 inline void chunk16(uint16_t inVal, uint8_t* outArray) {
   if (outArray != nullptr) {
