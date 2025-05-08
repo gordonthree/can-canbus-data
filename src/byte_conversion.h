@@ -3,6 +3,15 @@
 
 #include <cstdint>
 
+/**
+ * @namespace ByteConversion
+ * @brief A namespace encompassing functions for converting data between various formats.
+ *
+ * This namespace provides a collection of utility functions designed to facilitate
+ * the conversion of numeric data types to byte arrays and vice versa, adhering to
+ * network byte order (big-endian format). These functions are particularly useful
+ * in contexts such as CAN bus communication where precise data formatting is required.
+ */
 namespace ByteConversion {
 
 /**
