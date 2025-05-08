@@ -39,6 +39,7 @@
 #define NODE_MOD_MASK          0x780       // 0x700 to 0x77F are sub modules, 0x780 and above are remote nodes
 #define ADDR_FIRST_NODE        0x780       // first valiud address for remote nodes
 #define ADDR_FIRST_MODULE      0x700       // first valid address for sub modules
+#define ADDR_LAST_MODULE       0x7FF       // last valid address for sub modules
            
 #define MSG_CTRL_SWITCHES      0x110       // switch box controls
 #define MASK_CTRL_SWITCHES     0x180       // address range 0x100:0x17F
