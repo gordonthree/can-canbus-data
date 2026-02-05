@@ -11,34 +11,34 @@
 
 /* output switches */
 struct outputSwitch {  
-    uint8_t  swState = 0;          // switch state on, off, momentary
-    uint8_t  swMode  = 0;          // switch mode 0 toggle, 1 momentary, 2 blinking, 3 strobe, 4 pwm, 5 disabled
-    uint8_t  swType  = 0;          // mosfet, relay, sink
-    uint8_t  featuresMask[2];      // feature mask
-    uint16_t pwmDuty = 20;         // pwm duty cycle
-    uint16_t pwmFreq = 1000;       // pwm frequency
-    uint16_t blinkDelay = 5000;    // blink delay in ms
-    uint16_t momPressDur = 500;    // momentary press duration in ms
-    uint8_t  strobePat = 1;        // strobe pattern
-    uint8_t  stateMemory = 1;      // state memory
-    time_t   lastSeen = 0;         // last time seen
+    uint32_t lastSeen;               /* last time seen */
+    uint16_t pwmDuty;                /* pwm duty cycle */
+    uint16_t pwmFreq;                /* pwm frequency */
+    uint16_t blinkDelay;             /* blink delay in ms */
+    uint16_t momPressDur;            /* momentary press duration in ms */
+    uint8_t  swState;                /* switch state on, off, momentary */
+    uint8_t  swMode;                 /* switch mode 0 toggle, 1 momentary, 2 blinking, 3 strobe, 4 pwm, 5 disabled */
+    uint8_t  swType;                 /* mosfet, relay, sink */
+    uint8_t  featuresMask[2];        /* feature mask */
+    uint8_t  strobePat;              /* strobe pattern */
+    uint8_t  stateMemory;            /* state memory */
   };
 
   /* various sensors */
   struct outputSensor {
-    bool     present         = false;       // flag indicating sensor presence
-    uint16_t sensorType      = 0;           // sensor type 
-    uint16_t sensorMsg       = 0;           // send our data using this message id
-    bool     privMsg         = false;       // set to true when controller assigns us a private msg channel
-    uint8_t  featuresMask[2] = {0};         // feature mask
-    int32_t  i32Value        = 0;           // signed long int
-    float    fltValue        = 0.0;         // floating point
-    uint8_t  dataSize        = 4;           // how many bytes is the data, more than 4 requires a private message
-    time_t   lastUpdate      = 0;           // timestamp
+    float    fltValue;               /* floating point */
+    uint32_t lastUpdate;             /* timestamp */
+    int32_t  i32Value;               /* signed long int */
+    uint16_t sensorType;             /* sensor type */
+    uint16_t sensorMsg;              /* send our data using this message id */
+    uint8_t  featuresMask[2];        /* feature mask */
+    uint8_t  dataSize;               /* how many bytes is the data, more than 4 requires a private message */
+    bool     present;                /* flag indicating sensor presence */
+    bool     privMsg;                /* set to true when controller assigns us a private msg channel */
   };
   
   /* IMU sensor data */
-  struct imuDataType {
+/*  struct imuDataType {
     float xaccel = 0.0;    
     float yaccel = 0.0;
     float zaccel = 0.0;
@@ -48,26 +48,28 @@ struct outputSwitch {
     float temperature = 0.0;
     uint32_t timestamp = 0;
   };
+*/
 
   /* remote nodes */
+  #ifdef CAN_CTRL
   struct remoteNode {
-    // 32-bit node id number
-    uint8_t   nodeID[NODE_ID_SIZE] = {0,0,0,0}; 
-    // 11-bit can bus message id and node type
-    uint16_t  nodeType             = 0;
-    // node feature mask storaege (optional)
-    uint8_t   featureMask[2]       = {0,0};
-    // storage for any sub modules
-    uint16_t  subModuleList[8]     = {0}; 
-    // sub module count for each sub module
-    uint8_t   subModCntList[8]     = {0};
-    // total sub module count
-    uint8_t   moduleCnt            = 0; 
-    // last time message received from node 
-    uint32_t  lastSeen             = 0;
-    // first time message received from node 
-    uint32_t  firstSeen            = 0;
-  } ; 
+    /* 32-bit node id number */
+    uint8_t   nodeID[NODE_ID_SIZE]; 
+    /* last time message received from node */
+    uint32_t  lastSeen;
+    /* first time message received from node */
+    uint32_t  firstSeen;
+    /* 11-bit can bus message id and node type */
+    uint16_t  nodeType;
+    /* storage for any sub modules */
+    uint16_t  subModuleList[8]; 
+    /* node feature mask storage (optional) */
+    uint8_t   featureMask[2];
+    /* sub module count for each sub module */
+    uint8_t   subModCntList[8];
+    /* total sub module count */
+    uint8_t   moduleCnt; 
+  }; 
 
 /**
   * @brief Structure to store all info about a node and associated modules
@@ -79,8 +81,8 @@ struct outputSwitch {
     uint8_t   nodeID[NODE_ID_SIZE] = {0,0,0,0};         /**  Unique 32-bit node id number. */
     uint8_t   featureMask[2]       = {0,0};             /**  Two bytes of data to send with node introduction (optional.) */
     uint8_t   subModCnt            = 0;                 /**  Sub module count for this node. */
-    time_t    lastSeen             = 0;                 /**  Last time a message was received from this node.  */
-    time_t    firstSeen            = 0;                 /**  First time a message was received from this node. */
+    uint32_t    lastSeen             = 0;                 /**  Last time a message was received from this node.  */
+    uint32_t    firstSeen            = 0;                 /**  First time a message was received from this node. */
     
     struct    {                                         /** Storage for sub modules. */
                 uint16_t modType         = 0;           /** 11-bit message id that defines module type, used for introduction.  */
@@ -103,5 +105,6 @@ struct outputSwitch {
                 time_t   timestamp       = 0;           /** Last seen timestamp for this module.  */
               } subModules[8];  
   };    // end canNodeInfo 
+  #endif
 
   #endif // end CANBUS_STRUCT_H
