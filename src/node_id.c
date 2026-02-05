@@ -4,8 +4,9 @@
 */
 
 #include "node_id.h"
-#include "crc.h"              // CubeMX-generated, declares CRC_HandleTypeDef hcrc
-#include "stm32g0xx_hal_msp.h"  // replace fxxx with your family (e.g., stm32f4xx_hal.h)
+// #include "crc.h"              // CubeMX-generated, declares CRC_HandleTypeDef hcrc
+// #include "stm32g0xx_hal_msp.h"  // replace fxxx with your family (e.g., stm32f4xx_hal.h)
+#include "stm32g0xx_hal.h"
 
 /* If you want compile-time debug prints, define NODE_ID_DEBUG and provide printf(). */
 /* #define NODE_ID_DEBUG */
