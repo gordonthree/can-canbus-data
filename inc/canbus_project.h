@@ -8,5 +8,6 @@
 #include "canbus_msg.h"
 #include "canbus_struct.h"
 #include "byte_conversion.h"
+#include "node_id.h"
 
 #endif /* end CANBUS_PROJECT_H */
