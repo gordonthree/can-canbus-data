@@ -1,9 +1,6 @@
 #ifndef CANBUS_MSG_H
 #define CANBUS_MSG_H
 
-
-
-
 // #define MASK_24BIT 0xFF0  // returns 0x7x0 if message ID is between 0x7x0 and 0x7xF
 // sub module types // node and module masks 
 // #define INTRO_DISPLAY   0x710  // introduction for data modules
@@ -294,4 +291,4 @@ const uint8_t FEATURE_DISP_LCD[]                 = {0x80,0x48};  // feature mask
      
 // ======================= CUT HERE FOR      SHEETS RESYNC ==========================
      
-#endif     
+#endif     /** END CANBUS_MSG_H */
