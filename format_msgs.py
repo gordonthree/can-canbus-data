@@ -52,7 +52,7 @@ def generate_header():
                 val_16 = f"0x{h_byte}{l_byte}"
                 line = f"#define {name:<{ALIGN}} ((uint16_t){val_16})"
                 if desc:
-                    line += f" /** feature mask for {desc} */"
+                    line += f" /**< feature mask for {desc} */"
                 header_content.append(line)
             except:
                 continue
@@ -83,7 +83,7 @@ def generate_header():
                 id_macro = f"CAN_ID_{name}"
                 id_line = f"#define {id_macro:<{ALIGN}} ({msg_id})"
                 if comment:
-                    id_line += f" /** {comment} */"
+                    id_line += f" /**< {comment} */"
                 header_content.append(id_line)
                 
                 # DLC line
