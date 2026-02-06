@@ -48,15 +48,24 @@ struct outputSwitch {
     float temperature = 0.0;
     uint32_t timestamp = 0;
   };
-*/
+  */
+ 
+  struct remoteNode {
+    uint32_t  lastSeen;       /**< last time message received from node */
+    uint32_t  firstSeen;      /**< first time message received from node */
+    uint32_t  nodeID;         /**< 32-bit node id number */
+    uint16_t  nodeType;       /**< 11-bit can bus message id and node type */
+    uint8_t   subModuleCount; /**< count of sub modules associated with this node */
+    uint8_t   featureMask[2]; /**< node feature mask storage */
+  };
 
-struct subModule_t {
+  typedef struct subModule_t {
     uint32_t   lastSeen;              /**< last seen timestamp for this submodule */
     union {                           /* Union: only takes the space of the largest member */
         float   fltValue;             /**< Floating point data field.  */
         int32_t i32Value;             /**< Signed int data field.  */
         uint8_t u8Value;              /**< Byte data field use for switch state or sensor data.  */
-  } data;                             /**< data field */
+    } data;                             /**< data field */
     uint16_t modType         ;        /**< 11-bit message id that defines module type, used for introduction.  */
     uint16_t pwmDuty         ;        /**< Current PWM duty cycle.  */
     uint16_t pwmFreq         ;        /**< Current PWM frequency.  */
@@ -74,21 +83,9 @@ struct subModule_t {
     uint16_t  sendFeatureMask : 1;         /**< Send feature mask during introduction. */
     uint16_t  privMsg         : 1;         /**< Flag indicating txMsgID is a private channel.  */
     uint16_t  reserved        : 2;         /**< Reserved - fills remaining bits.  */
-};
+  };
 
-  struct remoteNode {
-    uint32_t  lastSeen;       /**< last time message received from node */
-    uint32_t  firstSeen;      /**< first time message received from node */
-    uint32_t  nodeID;         /**< 32-bit node id number */
-    uint16_t  nodeType;       /**< 11-bit can bus message id and node type */
-    uint8_t   subModuleCount; /**< count of sub modules associated with this node */
-    uint8_t   featureMask[2]; /**< node feature mask storage */
-  }; 
 
-/**
-  * @brief Structure to store all info about a node and associated modules
-  *
-  **/
   struct canNodeInfo {                                 
     uint32_t  nodeID;           /**< Unique 32-bit node id number. */
     uint16_t  nodeType;         /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
