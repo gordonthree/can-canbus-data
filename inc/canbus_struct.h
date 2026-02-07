@@ -9,6 +9,33 @@
 #include "canbus_flags.h"
 #endif
 
+#include <stdint.h>
+
+/**
+ * @brief 64-bit Union for the CAN data payload.
+ * Total size: 8 bytes.
+ */
+typedef union {
+    uint64_t raw;
+    struct __attribute__((packed)) {
+        uint32_t nodeID;       // Bits 0-31
+        uint8_t  featureMask1; // Bits 32-39
+        uint8_t  featureMask2; // Bits 40-47
+        uint16_t padding;      // Bits 48-63
+    } fields;
+} CANMessagePayload;
+
+/**
+ * @brief Complete CAN Message structure for RTOS Queues/Pools.
+ * This wraps the ID and the Payload together.
+ */
+typedef struct {
+    CANMessagePayload payload; /**< The 8-byte data block */
+    uint32_t canID;            /**< The CAN Arbitration ID */
+    uint8_t  DLC;              /**< Data Length Code */
+  } CAN_Msg_t;
+  
+
 /* output switches */
 struct outputSwitch {  
     uint32_t lastSeen;               /* last time seen */
@@ -65,14 +92,15 @@ struct outputSwitch {
         float   fltValue;             /**< Floating point data field.  */
         int32_t i32Value;             /**< Signed int data field.  */
         uint8_t u8Value;              /**< Byte data field use for switch state or sensor data.  */
-    } data;                             /**< data field */
-    uint16_t modType         ;        /**< 11-bit message id that defines module type, used for introduction.  */
+    } data;                           /**< data field */
+    uint16_t modTypeMsg       ;       /**< 11-bit message id that defines module type, used for introduction.  */
     uint16_t pwmDuty         ;        /**< Current PWM duty cycle.  */
     uint16_t pwmFreq         ;        /**< Current PWM frequency.  */
     uint16_t blinkDelay      ;        /**< Blink delay in milliseconds.   */
     uint16_t momPressDur     ;        /**< Momentary press duration in milliseconds.  */
-    uint16_t txMsgID         ;        /**< Module sends data using this message id.  */
+    uint16_t privateMsgID;            /**< Module sends data using this private message id (optional)  */
     uint8_t  featureMask[2]  ;        /**< Feature mask to send with introduction.  */
+    uint8_t  modTypeDLC;              /**< DLC - Data length code for the submodule id message  */ 
     uint8_t  dataSize        ;        /**< Sensor data size in bytes, more than 4 requires a private message.  */
 
     // Bit-packing flags and small modes into 2 bytes total
@@ -87,9 +115,10 @@ struct outputSwitch {
 
   struct canNodeInfo {                                 
     uint32_t  nodeID;           /**< Unique 32-bit node id number. */
-    uint16_t  nodeType;         /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
+    uint16_t  nodeTypeMsg;      /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
     uint8_t   featureMask[2];   /**< Two bytes of data to send with node introduction (optional.) */
     uint8_t   subModCnt;        /**< Sub module count for this node. */
+    uint8_t   nodeTypeDLC;      /**< Data length code for the node type message. */
     
     struct subModule_t subModules[8];
   };    // end canNodeInfo 
