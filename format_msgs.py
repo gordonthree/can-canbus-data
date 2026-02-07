@@ -80,7 +80,7 @@ def generate_header():
 
             if msg_id and msg_id.lower() != 'nan':
                 # ID line
-                id_macro = f"CAN_ID_{name}"
+                id_macro = f"{name}_ID"
                 id_line = f"#define {id_macro:<{ALIGN}} ({msg_id})"
                 if comment:
                     id_line += f" /**< {comment} */"
@@ -90,7 +90,7 @@ def generate_header():
                 try:
                     if pd.notnull(dlc):
                         dlc_val = int(float(dlc))
-                        dlc_macro = f"CAN_DLC_{name}"
+                        dlc_macro = f"{name}_DLC"
                         header_content.append(f"#define {dlc_macro:<{ALIGN}} ({dlc_val})")
                 except:
                     pass
