@@ -59,7 +59,7 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
-  typedef struct subModule_t {
+  struct subModule_t {
     uint32_t   lastSeen;              /**< last seen timestamp for this submodule */
     union {                           /* Union: only takes the space of the largest member */
         float   fltValue;             /**< Floating point data field.  */
@@ -72,7 +72,6 @@ struct outputSwitch {
     uint16_t blinkDelay      ;        /**< Blink delay in milliseconds.   */
     uint16_t momPressDur     ;        /**< Momentary press duration in milliseconds.  */
     uint16_t txMsgID         ;        /**< Module sends data using this message id.  */
-    uint8_t  modCount        ;        /**< Number of modules associated with the current modType. This information might be included in the feature mask. */
     uint8_t  featureMask[2]  ;        /**< Feature mask to send with introduction.  */
     uint8_t  dataSize        ;        /**< Sensor data size in bytes, more than 4 requires a private message.  */
 
@@ -92,7 +91,7 @@ struct outputSwitch {
     uint8_t   featureMask[2];   /**< Two bytes of data to send with node introduction (optional.) */
     uint8_t   subModCnt;        /**< Sub module count for this node. */
     
-    subModule_t subModules[8];
+    struct subModule_t subModules[8];
   };    // end canNodeInfo 
 
   #endif // end CANBUS_STRUCT_H
