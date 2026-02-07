@@ -108,8 +108,8 @@ struct outputSwitch {
     uint16_t  strobePat       : 4;         /**< Strobe pattern - see defines.  */
     uint16_t  stateMemory     : 4;         /**< Output state memory - see defines.  */
     uint16_t  sendFeatureMask : 1;         /**< Send feature mask during introduction. */
-    uint16_t  privMsg         : 1;         /**< Flag indicating txMsgID is a private channel.  */
-    uint16_t  reserved        : 2;         /**< Reserved - fills remaining bits.  */
+    uint16_t  privMsg         : 1;         /**< Flag indicating sub module uses privateMsgID as a private channel.  */
+    uint16_t  reserved        : 2;         /**< Reserved - fills remaining 16 bits.  */
   };
 
 
