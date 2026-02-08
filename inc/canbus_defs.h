@@ -1,5 +1,12 @@
 #ifndef CANBUS_DEFS_H
 #define CANBUS_DEFS_H
+
+#define DEBUG_MSG_SIZE   (256) /**< Max length of debug messages */
+#define DEBUG_QUEUE_LEN  (16)  /**< Max number of debug messages in queue */
+#define CAN_TX_QUEUE_LEN (16)  /**< Max number of CAN messages in the TX queue */
+#define CAN_RX_QUEUE_LEN (16)  /**< Max number of CAN messages in the RX queue */
+
+
 // time stuff
 #define NTP_SERVER             "us.pool.ntp.org"
 #define UTC_OFFSET             0
