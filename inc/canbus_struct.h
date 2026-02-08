@@ -93,14 +93,13 @@ struct outputSwitch {
         int32_t i32Value;             /**< Signed int data field.  */
         uint8_t u8Value;              /**< Byte data field use for switch state or sensor data.  */
     } data;                           /**< data field */
-    uint16_t modTypeMsg       ;       /**< 11-bit message id that defines module type, used for introduction.  */
+    uint16_t modType       ;       /**< 11-bit message id that defines module type, used for introduction.  */
     uint16_t pwmDuty         ;        /**< Current PWM duty cycle.  */
     uint16_t pwmFreq         ;        /**< Current PWM frequency.  */
     uint16_t blinkDelay      ;        /**< Blink delay in milliseconds.   */
     uint16_t momPressDur     ;        /**< Momentary press duration in milliseconds.  */
-    uint16_t privateMsgID;            /**< Module sends data using this private message id (optional)  */
+    uint16_t dataMsgId;               /**< Module actually sends data using this message id */
     uint8_t  featureMask[2]  ;        /**< Feature mask to send with introduction.  */
-    uint8_t  modTypeDLC;              /**< DLC - Data length code for the submodule id message  */ 
     uint8_t  dataSize        ;        /**< Sensor data size in bytes, more than 4 requires a private message.  */
 
     // Bit-packing flags and small modes into 2 bytes total
