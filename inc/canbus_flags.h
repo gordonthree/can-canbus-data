@@ -7,7 +7,7 @@ uint8_t FLAG_BEGIN_NORMAL_OPER;    // being normal operation
 uint8_t FLAG_HALT_NORMAL_OPER ;    // halt normal operation
 uint8_t FLAG_SEND_HEALTHCHECK ;    // send diagnostic health information
 uint8_t FLAG_SEND_NODECHECK   ;    // send node if and boot timestamp
-uint8_t FLAG_SET_RTC_TIME     ;    // set RTC time
+uint8_t FLAG_PRINT_TIMESTAMP  ;    // print timestamp in human readable format
 
 //
 #endif // end can_flags.h

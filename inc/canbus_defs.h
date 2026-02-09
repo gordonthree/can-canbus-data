@@ -1,10 +1,11 @@
 #ifndef CANBUS_DEFS_H
 #define CANBUS_DEFS_H
 
-#define DEBUG_MSG_SIZE   (256) /**< Size of debug message buffer */
-#define DEBUG_QUEUE_LEN  (16)  /**< Max number of debug message buffers in queue */
-#define CAN_TX_QUEUE_LEN (16)  /**< Max number of CAN messages in the TX queue */
-#define CAN_RX_QUEUE_LEN (16)  /**< Max number of CAN messages in the RX queue */
+#define DEBUG_MSG_SIZE         (256)       /**< Size of debug message buffer */
+#define DEBUG_QUEUE_LEN        (16)        /**< Max number of debug message buffers in queue */
+#define CAN_TX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the TX queue */
+#define CAN_RX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the RX queue */
+#define CAN_MSG_POOL_LEN       (16)        /**< Max number of CAN messages in the pool */
 
 
 // time stuff
