@@ -18,11 +18,12 @@
 typedef union {
     uint64_t raw;
     struct __attribute__((packed)) {
-        uint32_t nodeID;       // Bits 0-31
-        uint8_t  featureMask1; // Bits 32-39
-        uint8_t  featureMask2; // Bits 40-47
-        uint16_t padding;      // Bits 48-63
-    } fields;
+        uint32_t nodeID;      /**< D0-D3 */
+        uint8_t  data_d4;     /**< D4 */
+        uint8_t  data_d5;     /**< D5 */
+        uint8_t  data_d6;     /**< D6 */
+        uint8_t  data_d7;     /**< D7 */
+    } fields; /**< 64-bit union */
 } CANMessagePayload;
 
 /**
@@ -93,7 +94,7 @@ struct outputSwitch {
         int32_t i32Value;             /**< Signed int data field.  */
         uint8_t u8Value;              /**< Byte data field use for switch state or sensor data.  */
     } data;                           /**< data field */
-    uint16_t modType       ;       /**< 11-bit message id that defines module type, used for introduction.  */
+    uint16_t modType          ;       /**< NOT CAN MSG ID - 11-bit message id that defines module type, used for introduction.  */
     uint16_t pwmDuty         ;        /**< Current PWM duty cycle.  */
     uint16_t pwmFreq         ;        /**< Current PWM frequency.  */
     uint16_t blinkDelay      ;        /**< Blink delay in milliseconds.   */
@@ -106,7 +107,7 @@ struct outputSwitch {
     uint16_t  outMode         : 4;         /**< Current output mode - see defines. */
     uint16_t  strobePat       : 4;         /**< Strobe pattern - see defines.  */
     uint16_t  stateMemory     : 4;         /**< Output state memory - see defines.  */
-    uint16_t  sendFeatureMask : 1;         /**< Send feature mask during introduction. */
+    uint16_t  useFeatureMask  : 1;         /**< Send feature mask during introduction. */
     uint16_t  privMsg         : 1;         /**< Flag indicating sub module uses privateMsgID as a private channel.  */
     uint16_t  reserved        : 2;         /**< Reserved - fills remaining 16 bits.  */
   };
