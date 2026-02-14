@@ -89,20 +89,6 @@
 #define STROBE_PATTERN_4       (0x04)        /** tbd */
 #define STROBE_PATTERN_5       (0x05)        /** tbd */
 
-#include <FastLED.h>
 
-/** * @brief Global index-based palette.
- * @note Transmit the index (0-31) over CAN to save bandwidth.
- */
-const CRGB SystemPalette[32] = {
-    CRGB::Black,        CRGB::White,        CRGB::Red,          CRGB::Green,
-    CRGB::Blue,         CRGB::Yellow,       CRGB::Cyan,         CRGB::Magenta,
-    CRGB::Orange,       CRGB::Purple,       CRGB::Lime,         CRGB::DarkGreen,
-    CRGB::DeepPink,     CRGB::HotPink,      CRGB::DarkOrange,   CRGB::LightSkyBlue,
-    CRGB::DodgerBlue,   CRGB::DarkViolet,   CRGB::DarkRed,      CRGB::FireBrick,
-    CRGB::Aqua,         CRGB::Aquamarine,   CRGB::Teal,         CRGB::Gold,
-    CRGB::Salmon,       CRGB::Lavender,     CRGB::Maroon,       CRGB::Olive,
-    CRGB::SteelBlue,    CRGB::Chocolate,    CRGB::OrangeRed,    CRGB::RoyalBlue
-};
 
 #endif /** end CANBUS_DEFS_H  */
