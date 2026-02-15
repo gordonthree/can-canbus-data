@@ -2,6 +2,10 @@
   "name": "can-canbus-data",
   "version": "1.0.0",
   "build": {
-    "includeDir": "include"
+    "srcFilter": [
+      "+<*>",
+      "-<venv/>",
+      "-<**/venv/*>"
+    ]
   }
 }
