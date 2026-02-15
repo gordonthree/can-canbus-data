@@ -87,40 +87,98 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
-  struct subModule_t {
+  /** structure to define a sub module */
+  struct __attribute__((packed)) subModule_t {
     uint32_t   lastSeen;              /**< last seen timestamp for this submodule */
-    union {                           /* Union: only takes the space of the largest member */
-        float   fltValue;             /**< Floating point data field.  */
-        int32_t i32Value;             /**< Signed int data field.  */
-        uint8_t u8Value;              /**< Byte data field use for switch state or sensor data.  */
-    } data;                           /**< data field */
-    uint16_t modType          ;       /**< NOT CAN MSG ID - 11-bit message id that defines module type, used for introduction.  */
-    uint16_t pwmDuty         ;        /**< Current PWM duty cycle.  */
-    uint16_t pwmFreq         ;        /**< Current PWM frequency.  */
-    uint16_t blinkDelay      ;        /**< Blink delay in milliseconds.   */
-    uint16_t momPressDur     ;        /**< Momentary press duration in milliseconds.  */
-    uint16_t dataMsgId;               /**< Module actually sends data using this message id */
-    uint8_t  featureMask[2]  ;        /**< Feature mask to send with introduction.  */
-    uint8_t  dataSize        ;        /**< Sensor data size in bytes, more than 4 requires a private message.  */
+    
+    /* Configuration Personalities */
+    union {
+        /** Addressable LED Strips */
+        struct {
+            uint8_t  outputPin;      /**< Physical pin/bus index */
+            uint16_t ledCount;       /**< Number of LEDs in this strip */
+            uint8_t  colorOrder;     /**< GRB, RGB, etc. */
+        } argbLed;
 
-    // Bit-packing flags and small modes into 2 bytes total
-    uint16_t  outMode         : 4;         /**< Current output mode - see defines. */
-    uint16_t  strobePat       : 4;         /**< Strobe pattern - see defines.  */
-    uint16_t  stateMemory     : 4;         /**< Output state memory - see defines.  */
-    uint16_t  useFeatureMask  : 1;         /**< Send feature mask during introduction. */
-    uint16_t  privMsg         : 1;         /**< Flag indicating sub module uses privateMsgID as a private channel.  */
-    uint16_t  reserved        : 2;         /**< Reserved - fills remaining 16 bits.  */
+        /** Digital inputs such as physical switches and buttons */
+        struct {
+            uint8_t  inputPin;       /**< Physical pin/bus index */
+            uint8_t  debounceMs;     /**< Button debounce time 10ms intervals */
+            uint8_t  outputRes;      /**< Internal pull-up or pull-down enabled? */
+            uint8_t  isInverted;     /**< Active High vs Active Low */
+        } digitalInput;
+
+        /** Analog ADC inputs */
+        struct {
+            uint8_t  inputPin;       /**< Physical pin/bus index */
+            uint16_t overSampleCnt;  /**< ADC oversampling count */
+            uint8_t  reserved;       /**< Padding - reserved */
+        } analogInput;
+
+        /** Digital outputs such as relays and mosfets */
+        struct {
+            uint8_t  outputPin;      /**< Physical pin/bus index */
+            uint8_t  momPressDur;    /**< Momentary press duration in 10ms intervals.  */
+            uint8_t  outputMode;     /**< See OUT_MODE defines in canbus_defs.h */
+            uint8_t  isInverted;     /**< Active High vs Active Low */
+        } digitalOutput;
+
+        /** PWM outputs */
+        struct {
+            uint8_t  outputPin;      /**< Physical pin/bus index */
+            uint16_t pwmFreq;        /**< Current PWM frequency in 100 hz increments.  */
+            uint8_t  isInverted;     /**< Active High vs Active Low */
+        } pwmOutput;
+        
+        /** Blinking and strobing outputs */
+        struct {
+            uint8_t  outputPin;      /**< Physical pin/bus index */
+            uint8_t  blinkDelay;     /**< Blink delay in in 100 ms intervals.   */
+            uint8_t  strobePat;      /**< Strobe pattern - see defines.  */
+            uint8_t  isInverted;     /**< Active High vs Active Low */
+
+        } blinkOutput;
+
+        /** Analog RGB/RGBW strips */
+        struct {
+            uint8_t  stripIndex;     /**< Strip index index */
+            uint8_t  colorIndex;     /**< 0 red 1 green 2 blue, 3 RGB, 4 RGBW or RGBA, 5 RGBCCT see defines */
+            uint8_t  pinIndex;       /**< Pin configuration index (hard coded?) */
+            uint8_t  reserved;       /**< Padding - reserved */
+        } rgbLed;
+
+        /** Analog DAC outputs */
+        struct {
+            uint8_t  outputPin;      /**< Physical pin/bus index */
+            uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
+            uint16_t reserved;       /**< Padding - reserved */
+        } analogOutput;
+
+        uint8_t rawConfig[4];        /**< Generic fallback */
+    } config;
+
+    /** Operational Data */
+    union {
+        float    fltValue;          /**< Floating point data (32-bits) */
+        uint32_t u32Value;          /**< 32-bit unsigned int data */
+        uint16_t u16Value;          /**< 16-bit unsigned int data */
+        uint8_t  u8Value;           /**< 8-bit unsigned int data */
+    } data;
+
+    /** per-module configuration data */
+    uint16_t modType;               /**< NOT CAN MSG ID - 11-bit message id that defines module type, used for introduction.  */
+    uint16_t dataMsgId;             /**< Module actually sends data using this message id */
+    uint8_t  dataMsgDLC;            /**< DLC for the data message  */
+    uint8_t  saveState;             /**< Save output state on power loss?  */
   };
 
 
   struct canNodeInfo {                                 
-    uint32_t  nodeID;           /**< Unique 32-bit node id number. */
-    uint16_t  nodeTypeMsg;      /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
-    uint8_t   featureMask[2];   /**< Two bytes of data to send with node introduction (optional.) */
-    uint8_t   subModCnt;        /**< Sub module count for this node. */
-    uint8_t   nodeTypeDLC;      /**< Data length code for the node type message. */
-    
-    struct subModule_t subModules[8];
-  };    // end canNodeInfo 
+    struct subModule_t subModules[8]; /**< Sub module configurations associated with this node */
+    uint32_t  nodeID;                 /**< Unique 32-bit node id number. */
+    uint16_t  nodeTypeMsg;            /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
+    uint8_t   nodeTypeDLC;            /**< Data length code for the node type message. */
+    uint8_t   subModCnt;              /**< Sub module count for this node. */
+  };    
 
-  #endif // end CANBUS_STRUCT_H
+  #endif /* end CANBUS_STRUCT_H */
