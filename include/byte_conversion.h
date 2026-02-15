@@ -63,6 +63,12 @@ static inline void BC_Chunk16(uint16_t inVal, uint8_t* outArray) {
 }
 
 
+/**
+ * @brief Convert a 4-byte array (Big Endian) to a uint32_t.
+ *
+ * @param bytes The 4-byte array to convert.
+ * @return The converted uint32_t.
+ */
 uint32_t packBytes32(const uint8_t* bytes) {
     return ((uint32_t)bytes[0] << 24) |
            ((uint32_t)bytes[1] << 16) |
