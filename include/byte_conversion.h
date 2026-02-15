@@ -62,4 +62,12 @@ static inline void BC_Chunk16(uint16_t inVal, uint8_t* outArray) {
     }
 }
 
+
+uint32_t packBytes32(const uint8_t* bytes) {
+    return ((uint32_t)bytes[0] << 24) |
+           ((uint32_t)bytes[1] << 16) |
+           ((uint32_t)bytes[2] << 8)  |
+            (uint32_t)bytes[3];
+}
+
 #endif // BYTE_CONVERSION_H
