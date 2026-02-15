@@ -1249,7 +1249,8 @@ BO_ 1943 IFACE_RESERVED_797: 6 Vector__XXX
  SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1944 IFACE_RESERVED_798: 4 Vector__XXX
+BO_ 1944 IFACE_RESERVED_798: 6 Vector__XXX
+ SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1945 IFACE_6_AXIS_IMU: 6 Vector__XXX
@@ -1264,16 +1265,20 @@ BO_ 1947 IFACE_4X6_BUTTON_BOX: 6 Vector__XXX
  SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1948 IFACE_RESERVED_79C: 4 Vector__XXX
+BO_ 1948 IFACE_ARGB_MULTI: 6 Vector__XXX
+ SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1949 IFACE_RESERVED_79D: 4 Vector__XXX
+BO_ 1949 IFACE_RESERVED_79D: 6 Vector__XXX
+ SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1950 IFACE_RESERVED_79E: 4 Vector__XXX
+BO_ 1950 IFACE_RESERVED_79E: 6 Vector__XXX
+ SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1951 IFACE_RESERVED_79F: 4 Vector__XXX
+BO_ 1951 IFACE_RESERVED_79F: 6 Vector__XXX
+ SG_ feature_mask : 39|16@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
 
@@ -1618,7 +1623,7 @@ CM_ BO_ 1944 "iface reserved 798";
 CM_ BO_ 1945 "6 axis imu";
 CM_ BO_ 1946 "3x5 button box";
 CM_ BO_ 1947 "4x6 button box";
-CM_ BO_ 1948 "iface reserved 79c";
+CM_ BO_ 1948 "iface ARGB multi";
 CM_ BO_ 1949 "iface reserved 79d";
 CM_ BO_ 1950 "iface reserved 79e";
 CM_ BO_ 1951 "iface reserved 79f";
