@@ -600,7 +600,7 @@ BO_ 1307 DATA_NODE_BOOT_TIMESTAMP: 8 Vector__XXX
  SG_ unixtime : 39|32@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1308 DATA_RESERVED_51C: 4 Vector__XXX
+BO_ 1308 DATA_TOUCHSCREEN_EVENT: 4 Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1309 DATA_RESERVED_51D: 4 Vector__XXX
@@ -797,7 +797,7 @@ BO_ 1802 DISP_ANALOG_BACKLIGHT: 8 Vector__XXX
  SG_ submodule_id : 39|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1803 DISP_RESERVED_70B: 8 Vector__XXX
+BO_ 1803 DISP_TOUCHSCREEN_LCD: 8 Vector__XXX
  SG_ config_2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_0 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
@@ -846,7 +846,7 @@ BO_ 1809 INPUT_DIGITAL_GPIO: 8 Vector__XXX
  SG_ submodule_id : 39|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1810 DISP_ANALOG_BACKLIGHT_712: 8 Vector__XXX
+BO_ 1810 INPUT_RESERVED_712: 8 Vector__XXX
  SG_ config_2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_0 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
@@ -1910,7 +1910,7 @@ CM_ BO_ 1304 "analog knob mv";
 CM_ BO_ 1305 "data reserved 519";
 CM_ BO_ 1306 "node cpu temp";
 CM_ BO_ 1307 "node boot timestamp";
-CM_ BO_ 1308 "data reserved 51c";
+CM_ BO_ 1308 "data touchscreen event";
 CM_ BO_ 1309 "data reserved 51d";
 CM_ BO_ 1310 "data reserved 51e";
 CM_ BO_ 1311 "data reserved 51f";
@@ -1957,14 +1957,14 @@ CM_ BO_ 1799 "non-touch lcd display";
 CM_ BO_ 1800 "disp no backlight";
 CM_ BO_ 1801 "disp argb backlight";
 CM_ BO_ 1802 "disp analog backlight";
-CM_ BO_ 1803 "disp reserved 70b";
+CM_ BO_ 1803 "disp touchscreen lcd";
 CM_ BO_ 1804 "disp reserved 70c";
 CM_ BO_ 1805 "disp reserved 70d";
 CM_ BO_ 1806 "disp reserved 70e";
 CM_ BO_ 1807 "disp reserved 70f";
 CM_ BO_ 1808 "input analog adc";
 CM_ BO_ 1809 "input digital gpio";
-CM_ BO_ 1810 "disp analog backlight";
+CM_ BO_ 1810 "input reserved 712";
 CM_ BO_ 1811 "input virtual keypad";
 CM_ BO_ 1812 "analog knob input";
 CM_ BO_ 1813 "jog dial with click";
