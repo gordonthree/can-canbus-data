@@ -12,6 +12,17 @@
 #define INPUT_RES_PULLDOWN     (1)
 #define INPUT_RES_FLOATING     (2)
 
+/** Analog LED strip color order constants */
+/** 0 red 1 green 2 blue 3 white, 4 RGB, 5 RGBW, 6 RGBA, 7 RGBCCT */
+#define ANALOG_STRIP_RED       (0)
+#define ANALOG_STRIP_GREEN     (1)
+#define ANALOG_STRIP_BLUE      (2)
+#define ANALOG_STRIP_WHITE     (3)
+#define ANALOG_STRIP_RGB       (4)
+#define ANALOG_STRIP_RGBW      (5)
+#define ANALOG_STRIP_RGBA      (6)
+#define ANALOG_STRIP_RGBCCT    (7)
+
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
 #define UTC_OFFSET             (0)
