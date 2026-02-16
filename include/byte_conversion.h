@@ -34,7 +34,7 @@ static inline uint32_t unpackBytestoUint32(const uint8_t* dataBytes) {
 /**
  * @brief Convert 2-byte array (Big Endian) to uint16_t.
  */
-static inline uint16_t BC_Unchunk16(const uint8_t* dataBytes) {
+static inline uint16_t unpackBytestoUint16(const uint8_t* dataBytes) {
     if (dataBytes == NULL) return 0;
     return ((uint16_t)dataBytes[0] << 8) |
            ((uint16_t)dataBytes[1]);
@@ -43,7 +43,7 @@ static inline uint16_t BC_Unchunk16(const uint8_t* dataBytes) {
 /**
  * @brief Convert uint32_t to 4-byte array (Big Endian).
  */
-static inline void packUint32toBytes(uint32_t inVal, uint8_t* outArray) {
+static inline void packUint32ToBytes(uint32_t inVal, uint8_t* outArray) {
     if (outArray != NULL) {
         outArray[0] = (uint8_t)(inVal >> 24);
         outArray[1] = (uint8_t)(inVal >> 16);
