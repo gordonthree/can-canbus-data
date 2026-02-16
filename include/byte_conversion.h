@@ -23,7 +23,7 @@ static inline void BC_MessageBuilder(uint8_t* dest, const uint8_t* arr1, uint8_t
 /**
  * @brief Convert 4-byte array (Big Endian) to uint32_t.
  */
-static inline uint32_t BC_Unchunk32(const uint8_t* dataBytes) {
+static inline uint32_t unpackBytestoUint32(const uint8_t* dataBytes) {
     if (dataBytes == NULL) return 0;
     return ((uint32_t)dataBytes[0] << 24) |
            ((uint32_t)dataBytes[1] << 16) |
@@ -43,7 +43,7 @@ static inline uint16_t BC_Unchunk16(const uint8_t* dataBytes) {
 /**
  * @brief Convert uint32_t to 4-byte array (Big Endian).
  */
-static inline void BC_Chunk32(uint32_t inVal, uint8_t* outArray) {
+static inline void packUint32toBytes(uint32_t inVal, uint8_t* outArray) {
     if (outArray != NULL) {
         outArray[0] = (uint8_t)(inVal >> 24);
         outArray[1] = (uint8_t)(inVal >> 16);
