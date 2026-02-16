@@ -89,8 +89,6 @@ struct outputSwitch {
 
   /** structure to define a sub module */
   struct __attribute__((packed)) subModule_t {
-    uint32_t   lastSeen;              /**< last seen timestamp for this submodule */
-    
     /* Configuration Personalities */
     union {
         /** Addressable LED Strips */
@@ -173,8 +171,8 @@ struct outputSwitch {
   };
 
 
-  struct canNodeInfo {                                 
-    struct subModule_t subModules[8]; /**< Sub module configurations associated with this node */
+  struct __attribute__((packed)) nodeInfo_t {                                 
+    struct subModule_t subModule[8]; /**< Sub module configurations associated with this node */
     uint32_t  nodeID;                 /**< Unique 32-bit node id number. */
     uint16_t  nodeTypeMsg;            /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
     uint8_t   nodeTypeDLC;            /**< Data length code for the node type message. */
