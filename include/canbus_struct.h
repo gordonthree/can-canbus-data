@@ -90,7 +90,7 @@ struct outputSwitch {
   /** structure to define a sub module */
   struct __attribute__((packed)) subModule_t {
     /* Configuration Personalities 24-bits max*/
-    union {
+    union __attribute__((packed)) {
         /** Addressable LED Strips */
         struct {
             uint8_t  outputPin;      /**< Physical pin/bus index */
@@ -150,10 +150,11 @@ struct outputSwitch {
         uint8_t rawConfig[3];        /**< Generic fallback */
     } config; /**< Up to 24-bits of configuration data */
 
+    uint8_t reserved; /**< Explicit padding byte - now index 3 is visible */
+
     /** Operational Data */
-    union {
-        float    fltValue;          /**< Floating point data (32-bits) */
-        uint32_t u32Value;          /**< 32-bit unsigned int data */
+    union __attribute__((packed)){
+        uint8_t  rawData[4];        /**< Use 4-byte array for consistency */
         uint16_t u16Value;          /**< 16-bit unsigned int data */
         uint8_t  u8Value;           /**< 8-bit unsigned int data */
     } data;
