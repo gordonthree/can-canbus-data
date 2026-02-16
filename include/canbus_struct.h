@@ -89,19 +89,18 @@ struct outputSwitch {
 
   /** structure to define a sub module */
   struct __attribute__((packed)) subModule_t {
-    /* Configuration Personalities */
+    /* Configuration Personalities 24-bits max*/
     union {
         /** Addressable LED Strips */
         struct {
             uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint16_t ledCount;       /**< Number of LEDs in this strip */
+            uint8_t  ledCount;       /**< Number of LEDs in this strip */
             uint8_t  colorOrder;     /**< GRB, RGB, etc. */
         } argbLed;
 
         /** Digital inputs such as physical switches and buttons */
         struct {
             uint8_t  inputPin;       /**< Physical pin/bus index */
-            uint8_t  debounceMs;     /**< Button debounce time 10ms intervals */
             uint8_t  outputRes;      /**< Internal pull-up or pull-down enabled? */
             uint8_t  isInverted;     /**< Active High vs Active Low */
         } digitalInput;
@@ -110,7 +109,6 @@ struct outputSwitch {
         struct {
             uint8_t  inputPin;       /**< Physical pin/bus index */
             uint16_t overSampleCnt;  /**< ADC oversampling count */
-            uint8_t  reserved;       /**< Padding - reserved */
         } analogInput;
 
         /** Digital outputs such as relays and mosfets */
@@ -118,13 +116,12 @@ struct outputSwitch {
             uint8_t  outputPin;      /**< Physical pin/bus index */
             uint8_t  momPressDur;    /**< Momentary press duration in 10ms intervals.  */
             uint8_t  outputMode;     /**< See OUT_MODE defines in canbus_defs.h */
-            uint8_t  isInverted;     /**< Active High vs Active Low */
         } digitalOutput;
 
         /** PWM outputs */
         struct {
             uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint16_t pwmFreq;        /**< Current PWM frequency in 100 hz increments.  */
+            uint8_t  pwmFreq;        /**< Current PWM frequency in 100 hz increments.  */
             uint8_t  isInverted;     /**< Active High vs Active Low */
         } pwmOutput;
         
@@ -133,7 +130,6 @@ struct outputSwitch {
             uint8_t  outputPin;      /**< Physical pin/bus index */
             uint8_t  blinkDelay;     /**< Blink delay in in 100 ms intervals.   */
             uint8_t  strobePat;      /**< Strobe pattern - see defines.  */
-            uint8_t  isInverted;     /**< Active High vs Active Low */
 
         } blinkOutput;
 
@@ -142,18 +138,17 @@ struct outputSwitch {
             uint8_t  stripIndex;     /**< Strip index index */
             uint8_t  colorIndex;     /**< 0 red 1 green 2 blue, 3 RGB, 4 RGBW or RGBA, 5 RGBCCT see defines */
             uint8_t  pinIndex;       /**< Pin configuration index (hard coded?) */
-            uint8_t  reserved;       /**< Padding - reserved */
-        } rgbLed;
+        } analogStrip;
 
         /** Analog DAC outputs */
         struct {
             uint8_t  outputPin;      /**< Physical pin/bus index */
             uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
-            uint16_t reserved;       /**< Padding - reserved */
+            uint8_t  reserved;       /**< Padding - reserved */
         } analogOutput;
 
-        uint8_t rawConfig[4];        /**< Generic fallback */
-    } config;
+        uint8_t rawConfig[3];        /**< Generic fallback */
+    } config; /**< Up to 24-bits of configuration data */
 
     /** Operational Data */
     union {
@@ -164,8 +159,9 @@ struct outputSwitch {
     } data;
 
     /** per-module configuration data */
-    uint16_t modType;               /**< NOT CAN MSG ID - 11-bit message id that defines module type, used for introduction.  */
+    uint16_t introMsgId;            /**< Introduce sub module using this message id */
     uint16_t dataMsgId;             /**< Module actually sends data using this message id */
+    uint8_t  introMsgDLC;           /**< DLC for the intro message  */
     uint8_t  dataMsgDLC;            /**< DLC for the data message  */
     uint8_t  saveState;             /**< Save output state on power loss?  */
   };
