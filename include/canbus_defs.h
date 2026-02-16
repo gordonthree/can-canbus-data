@@ -7,6 +7,10 @@
 #define CAN_RX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the RX queue */
 #define CAN_MSG_POOL_LEN       (16)        /**< Max number of CAN messages in the pool */
 
+/* digital IO stuff */
+#define INPUT_RES_PULLUP       (0)
+#define INPUT_RES_PULLDOWN     (1)
+#define INPUT_RES_FLOATING     (2)
 
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
