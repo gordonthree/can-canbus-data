@@ -1196,21 +1196,21 @@ BO_ 1859 OUT_MECH_RELAY: 8 Vector__XXX
  SG_ submodule_id : 39|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1860 OUT_RESERVED_744: 8 Vector__XXX
+BO_ 1860 OUT_GPIO_DIGITAL: 8 Vector__XXX
  SG_ config_2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_0 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ submodule_id : 39|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1861 OUT_RESERVED_745: 8 Vector__XXX
+BO_ 1861 OUT_GPIO_PWM: 8 Vector__XXX
  SG_ config_2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_0 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ submodule_id : 39|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ node_id : 7|32@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1862 OUT_RESERVED_746: 8 Vector__XXX
+BO_ 1862 OUT_GPIO_DAC: 8 Vector__XXX
  SG_ config_2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ config_0 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
@@ -2014,9 +2014,9 @@ CM_ BO_ 1856 "high current solid state switch";
 CM_ BO_ 1857 "low current solid state switch";
 CM_ BO_ 1858 "open drain output";
 CM_ BO_ 1859 "mechanical relay";
-CM_ BO_ 1860 "out reserved 744";
-CM_ BO_ 1861 "out reserved 745";
-CM_ BO_ 1862 "out reserved 746";
+CM_ BO_ 1860 "gpio digital";
+CM_ BO_ 1861 "gpio pwm";
+CM_ BO_ 1862 "gpio dac";
 CM_ BO_ 1863 "out reserved 747";
 CM_ BO_ 1864 "out reserved 748";
 CM_ BO_ 1865 "out reserved 749";
