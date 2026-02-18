@@ -77,13 +77,13 @@
 #define MSG_NODE_DATA          (0x500)       /** nodes send data back to the controller */
 #define MASK_NODE_DATA         (0x580)       /** address range 0x500:0x57F */
 
-#define OUT_STATE_DISABLED     (0x00)        /** output is disabled */
-#define OUT_STATE_OFF          (0x01)        /** output is off */
-#define OUT_STATE_ON           (0x02)        /** output is on */
+#define OUT_STATE_OFF          (0x00)        /** output is off */
+#define OUT_STATE_ON           (0x01)        /** output is on */
 #define OUT_STATE_MOMENTARY    (0x03)        /** output is momentary */
 #define OUT_STATE_BLINKING     (0x04)        /** output is blinking */
 #define OUT_STATE_STROBE       (0x05)        /** output is strobing */
 #define OUT_STATE_PWM          (0x06)        /** output is pwm */
+#define OUT_STATE_DISABLED     (0x80)        /** output is disabled */
 #define OUT_STATE_INVALID      (0xFF)        /** invalid output state */
 
 #define OUT_MODE_ALWAYS_OFF    (0x00)        /** output is disabled and always-off */
