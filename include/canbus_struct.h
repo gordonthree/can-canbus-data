@@ -7,6 +7,7 @@
 
 #ifndef CANBUS_FLAGS_H
 #include "canbus_flags.h"
+#include "canbus_defs.h"
 #endif
 
 #include <stdint.h>
@@ -175,5 +176,14 @@ struct outputSwitch {
     uint8_t   nodeTypeDLC;            /**< Data length code for the node type message. */
     uint8_t   subModCnt;              /**< Sub module count for this node. */
   };    
+
+  struct __attribute__((packed)) colorPickerList_t {
+    uint32_t  remoteNodeID;           /**< 32-bit remote node id number */
+    uint32_t  lastSeen;               /**< timestamp of the last time a message was received from node */
+    uint16_t  dataMsgId;              /**< Msg ID used to communicate with remote node */
+    uint8_t   dataMsgDLC;             /**< Data length code for the data message. */
+    uint8_t   ledIndex;               /**< submodule index (0-7) */
+    uint8_t   colorIndex;             /**< color index on the custom 32 color palette */
+  }; /**< Storage structure for nodes with a color picker, used for remote control */
 
   #endif /* end CANBUS_STRUCT_H */
