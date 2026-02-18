@@ -23,6 +23,12 @@
 #define ANALOG_STRIP_RGBA      (6)
 #define ANALOG_STRIP_RGBCCT    (7)
 
+/* LCD / OLED Display modes */
+#define DISPLAY_MODE_OFF       (0)
+#define DISPLAY_MODE_ON        (1)
+#define DISPLAY_MODE_CLEAR     (2)
+#define DISPLAY_MODE_FLASH     (3)
+
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
 #define UTC_OFFSET             (0)
