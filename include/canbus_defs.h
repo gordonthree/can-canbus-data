@@ -7,6 +7,15 @@
 #define CAN_RX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the RX queue */
 #define CAN_MSG_POOL_LEN       (16)        /**< Max number of CAN messages in the pool */
 
+/* module limits */
+#define MAX_ARGB_SUBMODULES    (4U)        /**< Hardware limit for ARGB strips */
+#define MAX_SUB_MODULES        (8U)        /**< Memory limit for submodules */
+#define MAX_REMOTE_NODES       (8U)        /**< Memory limit for remote nodes */
+
+/* CAN constants */
+#define CAN_MAX_DLC            (8U)
+#define CAN_NODE_ID_LEN        (4U)
+
 /* digital IO stuff */
 #define INPUT_RES_PULLUP       (0)
 #define INPUT_RES_PULLDOWN     (1)
