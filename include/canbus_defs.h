@@ -1,11 +1,25 @@
 #ifndef CANBUS_DEFS_H
 #define CANBUS_DEFS_H
 
+/* random project defs */
 #define DEBUG_MSG_SIZE         (256)       /**< Size of debug message buffer */
 #define DEBUG_QUEUE_LEN        (16)        /**< Max number of debug message buffers in queue */
 #define CAN_TX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the TX queue */
 #define CAN_RX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the RX queue */
 #define CAN_MSG_POOL_LEN       (16)        /**< Max number of CAN messages in the pool */
+#define PWM_SCALING_FACTOR     (100U)
+#define MOM_SW_SCALING_FACTOR  (10U)
+#define BLINK_SCALING_FACTOR   (1U)
+#define LEDC_MAX_TIMERS        (4U)     /* there are four low speed timers, allow one LED per timer */
+#define LEDC_13BIT_0PCT        (0U)     /* 0% is 0 */
+#define LEDC_13BIT_10PCT       (819U)   /* 10% of 2^13 */
+#define LEDC_13BIT_25PCT       (2048U)  /* 25% of 2^13 */
+#define LEDC_13BIT_50PCT       (4096U)  /* 50% of 2^13 */
+#define LEDC_13BIT_100PCT      (8192U)  /* 100% of 2^13 */
+#define MAX_PIXEL_COUNT        (255U)   /* Maximum LEDs supported per submodule */
+#define MAX_ARGB_STRIPS        (1U)     /* Maximum ARGB strips supported per node */
+#define CAN_ERROR_AGE_MS       (30000U) /* forget errors after 30 seconds */
+
 
 /* module limits */
 #define MAX_ARGB_SUBMODULES    (4U)        /**< Hardware limit for ARGB strips */
