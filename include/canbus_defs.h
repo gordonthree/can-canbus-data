@@ -1,6 +1,4 @@
-#ifndef CANBUS_DEFS_H
-#define CANBUS_DEFS_H
-
+#pragma once
 /* === Project Defs === */
 
 /* random project defs */
@@ -80,6 +78,12 @@
 #define MASK_REQ_INTRO         (0x480)       /** address range 0x400:0x47F */
 #define MSG_NODE_DATA          (0x500)       /** nodes send data back to the controller */
 #define MASK_NODE_DATA         (0x580)       /** address range 0x500:0x57F */
+
+/**
+ * @brief Sub-module configuration constants
+ */
+#define SUBMOD_FLAG_SAVE_STATE   (1U << 0)   /**< Save output state to non-volatile memory */
+
 
 /* === ENUMERATIONS === */
 
@@ -193,5 +197,3 @@ typedef enum strobePattern_t {
 } strobePattern_t;
 
 
-
-#endif /** end CANBUS_DEFS_H  */
