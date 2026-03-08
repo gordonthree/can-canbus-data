@@ -88,85 +88,65 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
-  /** structure to define a sub module */
-  struct __attribute__((packed)) subModule_t {
-    /* Configuration Personalities 24-bits max*/
-    union __attribute__((packed)) {
-        /** Addressable LED Strips */
-        struct {
-            uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint8_t  ledCount;       /**< Number of LEDs in this strip */
-            uint8_t  colorOrder;     /**< GRB, RGB, etc. */
-        } argbLed;
+    /** structure to define a sub module */
+    typedef struct __attribute__((packed)) subModule_t
+    {
+        /* Hardware personality (defines pin, capabilities, etc.) */
+        uint8_t personalityId;
 
-        /** Digital inputs such as physical switches and buttons */
-        struct {
-            uint8_t  inputPin;       /**< Physical pin/bus index */
-            uint8_t  outputRes;      /**< Internal pull-up or pull-down enabled? */
-            uint8_t  isInverted;     /**< Active High vs Active Low */
-        } digitalInput;
+        /* 24-bit user configuration (behavior-level only) */
+        union __attribute__((packed)) {
+            uint8_t raw[3];
 
-        /** Analog ADC inputs */
-        struct {
-            uint8_t  inputPin;       /**< Physical pin/bus index */
-            uint16_t overSampleCnt;  /**< ADC oversampling count */
-        } analogInput;
+            struct { 
+                uint8_t mode;        // OUT_MODE_*
+                uint8_t param1;      // momentary duration / pwm freq / blink delay
+                uint8_t param2;      // pwm duty / strobe pattern / reserved
+            } gpioOutput;
 
-        /** Digital outputs such as relays and mosfets */
-        struct {
-            uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint8_t  momPressDur;    /**< Momentary press duration in 10ms intervals.  */
-            uint8_t  outputMode;     /**< See OUT_MODE defines in canbus_defs.h */
-        } digitalOutput;
+            struct {
+                uint8_t pull;        // pull-up/down/float
+                uint8_t invert;      // logical inversion
+                uint8_t reserved;
+            } gpioInput;
 
-        /** PWM outputs */
-        struct {
-            uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint8_t  pwmFreq;        /**< Current PWM frequency in 100 hz increments.  */
-            uint8_t  isInverted;     /**< Active High vs Active Low */
-        } pwmOutput;
-        
-        /** Blinking and strobing outputs */
-        struct {
-            uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint8_t  blinkDelay;     /**< Blink delay in in 100 ms intervals.   */
-            uint8_t  strobePat;      /**< Strobe pattern - see defines.  */
+            struct {
+                uint8_t colorOrder;
+                uint8_t ledCount;
+                uint8_t reserved;
+            } argb;
 
-        } blinkOutput;
+            struct {
+                uint16_t overSampleCnt;  /**< ADC oversampling count */
+                uint8_t  reserved;       /**< Padding - reserved */
+            } analogInput;
 
-        /** Analog RGB/RGBW strips */
-        struct {
-            uint8_t  stripIndex;     /**< Strip index index */
-            uint8_t  colorIndex;     /**< 0 red 1 green 2 blue, 3 RGB, 4 RGBW or RGBA, 5 RGBCCT see defines */
-            uint8_t  pinIndex;       /**< Pin configuration index (hard coded?) */
-        } analogStrip;
+            /** Analog RGB/RGBW strips */
+            struct {
+                uint8_t  configIndex;    /**< led strip configuration index */
+                uint8_t  reserved;       /**< Padding */
+                uint8_t  reserved;       /**< Padding */
+            } analogStrip;
 
-        /** Analog DAC outputs */
-        struct {
-            uint8_t  outputPin;      /**< Physical pin/bus index */
-            uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
-            uint8_t  reserved;       /**< Padding - reserved */
-        } analogOutput;
+            /** Analog DAC outputs */
+            struct {
+                uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
+                uint8_t  param1;         /**< output parameter byte 1 */
+                uint8_t  param2;         /**< output parameter byte 2 */
+            } analogOutput;
 
-        uint8_t rawConfig[3];        /**< Generic fallback */
-    } config; /**< Up to 24-bits of configuration data */
+            /* Additional personalities as needed */
+        } config;
 
-    uint8_t reserved; /**< Explicit padding byte - now index 3 is visible */
+        /* User-level semantic identity */
+        uint16_t introMsgId;
+        uint8_t  introMsgDLC;
 
-    /** Operational Data */
-    union __attribute__((packed)){
-        uint8_t  rawData[4];        /**< Use 4-byte array for consistency */
-        uint16_t u16Value;          /**< 16-bit unsigned int data */
-        uint8_t  u8Value;           /**< 8-bit unsigned int data */
-    } data;
+        /* Per-submodule flags (bitfield) */
+        uint8_t flags;
 
-    /** per-module configuration data */
-    uint16_t introMsgId;            /**< Introduce sub module using this message id */
-    uint16_t dataMsgId;             /**< Module actually sends data using this message id */
-    uint8_t  introMsgDLC;           /**< DLC for the intro message  */
-    uint8_t  dataMsgDLC;            /**< DLC for the data message  */
-    uint8_t  saveState;             /**< Save output state on power loss?  */
-  };
+    } subModule_t;
+
 
 
   struct __attribute__((packed)) nodeInfo_t {                                 
@@ -185,5 +165,10 @@ struct outputSwitch {
     uint8_t   ledIndex;               /**< submodule index (0-7) */
     uint8_t   colorIndex;             /**< color index on the custom 32 color palette */
   }; /**< Storage structure for nodes with a color picker, used for remote control */
+
+  typedef struct __attribute__((packed)) {
+    uint8_t raw[4];     // Up to 32 bits of runtime data
+    uint8_t dlc;        // How many bytes are valid
+} submoduleRuntime_t;
 
   #endif /* end CANBUS_STRUCT_H */
