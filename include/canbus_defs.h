@@ -1,6 +1,8 @@
 #ifndef CANBUS_DEFS_H
 #define CANBUS_DEFS_H
 
+/* === Project Defs === */
+
 /* random project defs */
 #define DEBUG_MSG_SIZE         (256)       /**< Size of debug message buffer */
 #define DEBUG_QUEUE_LEN        (16)        /**< Max number of debug message buffers in queue */
@@ -10,15 +12,10 @@
 #define PWM_SCALING_FACTOR     (100U)
 #define MOM_SW_SCALING_FACTOR  (10U)
 #define BLINK_SCALING_FACTOR   (1U)
-#define LEDC_MAX_TIMERS        (4U)     /* there are four low speed timers, allow one LED per timer */
-#define LEDC_13BIT_0PCT        (0U)     /* 0% is 0 */
-#define LEDC_13BIT_10PCT       (819U)   /* 10% of 2^13 */
-#define LEDC_13BIT_25PCT       (2048U)  /* 25% of 2^13 */
-#define LEDC_13BIT_50PCT       (4096U)  /* 50% of 2^13 */
-#define LEDC_13BIT_100PCT      (8192U)  /* 100% of 2^13 */
-#define MAX_PIXEL_COUNT        (255U)   /* Maximum LEDs supported per submodule */
-#define MAX_ARGB_STRIPS        (1U)     /* Maximum ARGB strips supported per node */
-#define CAN_ERROR_AGE_MS       (30000U) /* forget errors after 30 seconds */
+#define LEDC_MAX_TIMERS        (4U)        /* there are four low speed timers, allow one LED per timer */
+#define MAX_PIXEL_COUNT        (255U)      /* Maximum LEDs supported per submodule */
+#define MAX_ARGB_STRIPS        (1U)        /* Maximum ARGB strips supported per node */
+#define CAN_ERROR_AGE_MS       (30000U)    /* forget errors after 30 seconds */
 
 
 /* module limits */
@@ -29,28 +26,6 @@
 /* CAN constants */
 #define CAN_MAX_DLC            (8U)
 #define CAN_NODE_ID_LEN        (4U)
-
-/* digital IO stuff */
-#define INPUT_RES_PULLUP       (0)
-#define INPUT_RES_PULLDOWN     (1)
-#define INPUT_RES_FLOATING     (2)
-
-/** Analog LED strip color order constants */
-/** 0 red 1 green 2 blue 3 white, 4 RGB, 5 RGBW, 6 RGBA, 7 RGBCCT */
-#define ANALOG_STRIP_RED       (0)
-#define ANALOG_STRIP_GREEN     (1)
-#define ANALOG_STRIP_BLUE      (2)
-#define ANALOG_STRIP_WHITE     (3)
-#define ANALOG_STRIP_RGB       (4)
-#define ANALOG_STRIP_RGBW      (5)
-#define ANALOG_STRIP_RGBA      (6)
-#define ANALOG_STRIP_RGBCCT    (7)
-
-/* LCD / OLED Display modes */
-#define DISPLAY_MODE_OFF       (0)
-#define DISPLAY_MODE_ON        (1)
-#define DISPLAY_MODE_CLEAR     (2)
-#define DISPLAY_MODE_FLASH     (3)
 
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
@@ -74,11 +49,11 @@
 #define MODULE_NOT_FOUND      (-10)
 #define MODULE_ALREADY_EXISTS (-3)
 #define MODULE_LIST_FULL      (-4)
-#define MODULE_DISPLAY         (0x700)       /** display modules 0x700:0x70F */
-#define MODULE_INPUTS          (0x710)       /** physical input modules 0x710:0x71F */
-#define MODULE_SENSORS1        (0x720)       /** sensor modules group 2 0x720:0x72F */
-#define MODULE_SENSORS2        (0x730)       /** sensor modules group 2 0x730:0x73F */
-#define MODULE_OUTPUTS         (0x740)       /** output switches range 0x740:0x74F */
+#define MODULE_DISPLAY        (0x700)       /** display modules 0x700:0x70F */
+#define MODULE_INPUTS         (0x710)       /** physical input modules 0x710:0x71F */
+#define MODULE_SENSORS1       (0x720)       /** sensor modules group 2 0x720:0x72F */
+#define MODULE_SENSORS2       (0x730)       /** sensor modules group 2 0x730:0x73F */
+#define MODULE_OUTPUTS        (0x740)       /** output switches range 0x740:0x74F */
 
 /**
  * Define the size of data fields in messages
@@ -106,32 +81,116 @@
 #define MSG_NODE_DATA          (0x500)       /** nodes send data back to the controller */
 #define MASK_NODE_DATA         (0x580)       /** address range 0x500:0x57F */
 
-#define OUT_STATE_OFF          (0x00)        /** output is off */
-#define OUT_STATE_ON           (0x01)        /** output is on */
-#define OUT_STATE_MOMENTARY    (0x03)        /** output is momentary */
-#define OUT_STATE_BLINKING     (0x04)        /** output is blinking */
-#define OUT_STATE_STROBE       (0x05)        /** output is strobing */
-#define OUT_STATE_PWM          (0x06)        /** output is pwm */
-#define OUT_STATE_DISABLED     (0x80)        /** output is disabled */
-#define OUT_STATE_INVALID      (0xFF)        /** invalid output state */
+/* === ENUMERATIONS === */
 
-#define OUT_MODE_ALWAYS_OFF    (0x00)        /** output is disabled and always-off */
-#define OUT_MODE_ALWAYS_ON     (0x01)        /** output is disabled and always-on */
-#define OUT_MODE_TOGGLE        (0x02)        /** output acts like a standard on/off switch */
-#define OUT_MODE_MOMENTARY     (0x03)        /** output acts like a momentary push button switch */
-#define OUT_MODE_BLINKING      (0x04)        /** output blinks on and off like a turn signal */
-#define OUT_MODE_STROBE        (0x05)        /** output strobes various timing patterns */
-#define OUT_MODE_PWM           (0x06)        /** output uses pulse width modulation */
-#define OUT_MODE_INVALID       (0xFF)        /** invalid output mode */
+/**
+ * @enum ledc13bitDuty_t
+ * Enum for 13-bit LEDC duty cycles
+ */
+typedef enum {
+    LEDC_13BIT_0PCT   = 0,    /**< 0% is 0 */
+    LEDC_13BIT_10PCT  = 819,  /**< 10% of 2^13 */
+    LEDC_13BIT_25PCT  = 2048, /**< 25% of 2^13 */
+    LEDC_13BIT_50PCT  = 4096, /**< 50% of 2^13 */
+    LEDC_13BIT_100PCT = 8192, /**< 100% of 2^13 */
+} ledc13bitDuty_t;
 
-#define OUT_SAVE_STATE_OFF     (0x01)        /** disable save output state (memory) */
-#define OUT_SAVE_STATE_ON      (0x01)        /** enable save output state (memory) */
+/**
+ * @enum gpioInputRes_t
+ * @brief GPIO Resistor configuration
+ */
+typedef enum {
+    INPUT_RES_PULLUP, /**< Internal pull-up resistor enabled */
+    INPUT_RES_PULLDOWN, /**< Internal pull-down resistor enabled */
+    INPUT_RES_FLOATING /**< No internal resistor */
+} gpioInputRes_t;
 
-#define STROBE_PATTERN_1       (0x01)        /** repeating three flashes and a pause */
-#define STROBE_PATTERN_2       (0x02)        /** repeating 3x flash pause 5x flash pause */
-#define STROBE_PATTERN_3       (0x03)        /** tbd */
-#define STROBE_PATTERN_4       (0x04)        /** tbd */
-#define STROBE_PATTERN_5       (0x05)        /** tbd */
+/**
+ * @enum analogStrip_t
+ * @brief LED strip color order constants
+ *
+ * 0: red
+ * 1: green
+ * 2: blue
+ * 3: white
+ * 4: RGB
+ * 5: RGBW
+ * 6: RGBA
+ * 7: RGBCCT
+ */
+typedef enum {
+    ANALOG_STRIP_RED = 0,
+    ANALOG_STRIP_GREEN,
+    ANALOG_STRIP_BLUE,
+    ANALOG_STRIP_WHITE,
+    ANALOG_STRIP_RGB,
+    ANALOG_STRIP_RGBW,
+    ANALOG_STRIP_RGBA,
+    ANALOG_STRIP_RGBCCT
+} analogStrip_t;
+
+/**
+ * @enum displayMode_t
+ * @brief Display modes for the LCD / OLED display
+ */
+typedef enum {
+    DISPLAY_MODE_OFF = 0, /**< Turn off the display */
+    DISPLAY_MODE_ON,      /**< Turn on the display */
+    DISPLAY_MODE_CLEAR,   /**< Clear the display */
+    DISPLAY_MODE_FLASH    /**< Flash the display */
+} displayMode_t;
+
+/**
+ * @enum outputState_t
+ * @brief Enum for output states
+ */
+typedef enum {
+    OUT_STATE_OFF       = 0x00, /**< output is off */
+    OUT_STATE_ON        = 0x01, /**< output is on */
+    OUT_STATE_TOGGLE    = 0x02, /**< output is toggle */
+    OUT_STATE_MOMENTARY = 0x03, /**< output is momentary */
+    OUT_STATE_FOLLOW    = 0x04, /**< output following an external event */
+    OUT_STATE_STROBE    = 0x05, /**< output is strobing */
+    OUT_STATE_PWM       = 0x06, /**< output is pwm */
+    OUT_STATE_DISABLED  = 0x80, /**< output is disabled */
+    OUT_STATE_INVALID   = 0xFF, /**< invalid output state */
+} outputState_t;
+
+/**
+ * @enum outputMode_t
+ * @brief Enum for output modes
+ */
+typedef enum {
+    OUT_MODE_ALWAYS_OFF = 0x00, /**< output is disabled and always-off */
+    OUT_MODE_ALWAYS_ON  = 0x01, /**< output is disabled and always-on */
+    OUT_MODE_TOGGLE     = 0x02, /**< output acts like a standard on/off switch */
+    OUT_MODE_MOMENTARY  = 0x03, /**< output acts like a momentary push button switch */
+    OUT_MODE_FOLLOW     = 0x04, /**< output follows an external event */
+    OUT_MODE_STROBE     = 0x05, /**< output strobes various timing patterns */
+    OUT_MODE_PWM        = 0x06, /**< output uses pulse width modulation */
+    OUT_MODE_INVALID    = 0xFF, /**< invalid output mode */
+} outputMode_t;
+
+/**
+ * @enum outSaveState_t
+ * @brief Enum to control if the output state should be saved to memory.
+ */
+typedef enum {
+    OUT_SAVE_STATE_OFF = 0x00, /**< Disable saving the output state to memory. */
+    OUT_SAVE_STATE_ON  = 0x01  /**< Enable saving the output state to memory. */
+} outSaveState_t;
+
+/**
+ * @brief Enum for strobe patterns
+ * @enum strobePattern_t
+ */
+typedef enum strobePattern_t {
+    STROBE_PATTERN_1 = 0x01, /**< repeating three flashes and a pause */
+    STROBE_PATTERN_2 = 0x02, /**< repeating 3x flash pause 5x flash pause */
+    STROBE_PATTERN_3 = 0x03, /**< tbd */
+    STROBE_PATTERN_4 = 0x04, /**< tbd */
+    STROBE_PATTERN_5 = 0x05, /**< tbd */
+} strobePattern_t;
 
 
 
