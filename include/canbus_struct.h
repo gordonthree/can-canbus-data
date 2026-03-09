@@ -96,7 +96,7 @@ struct outputSwitch {
 
         /* 24-bit user configuration (behavior-level only) */
         union __attribute__((packed)) {
-            uint8_t raw[3];
+            uint8_t rawConfig[3];
 
             struct { 
                 uint8_t mode;        // OUT_MODE_*
@@ -111,9 +111,9 @@ struct outputSwitch {
             } gpioInput;
 
             struct {
-                uint8_t colorOrder;
-                uint8_t ledCount;
                 uint8_t reserved;
+                uint8_t ledCount;
+                uint8_t colorOrder;
             } argb;
 
             struct {
@@ -124,8 +124,8 @@ struct outputSwitch {
             /** Analog RGB/RGBW strips */
             struct {
                 uint8_t  configIndex;    /**< led strip configuration index */
-                uint8_t  reserved;       /**< Padding */
-                uint8_t  reserved;       /**< Padding */
+                uint8_t  reserved1;       /**< Padding */
+                uint8_t  reserved2;       /**< Padding */
             } analogStrip;
 
             /** Analog DAC outputs */
