@@ -88,6 +88,13 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
+  typedef struct __attribute__((packed)) {
+    uint8_t sub_idx;   /* submodule index */
+    uint8_t rate_hz;   /* broadcast rate (0 = disabled) */
+    uint8_t flags;     /* PRODUCER_FLAG_* */
+    uint8_t reserved;  /* future use */
+  } producer_cfg_t;
+
   typedef enum {
     PRODUCER_KIND_NONE = 0,     // Not a producer
     PRODUCER_KIND_SWITCH_STATE, // ON/OFF/MOMENTARY
@@ -161,7 +168,8 @@ struct outputSwitch {
     uint8_t flags;
 
     /* Producer configuration (behavior-level only) */
-    producer_t producer;   /**< NEW — dynamic producer personality */
+    producer_t     producer;      /**< dynamic producer personality */
+    producer_cfg_t producer_cfg;  /**< producer configuration */
   } subModule_t;
 
 
