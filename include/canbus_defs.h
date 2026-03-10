@@ -83,6 +83,7 @@
  * @brief Sub-module configuration constants
  */
 #define SUBMOD_FLAG_SAVE_STATE   (1U << 0)   /**< Save output state to non-volatile memory */
+#define SUBMOD_FLAG_DIRTY        (1U << 1)   /**< Sub-module state has changed */
 
 
 /* === ENUMERATIONS === */
