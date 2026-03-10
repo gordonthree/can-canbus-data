@@ -1,5 +1,4 @@
-#ifndef CANBUS_PROJECT_H
-#define CANBUS_PROJECT_H
+#pragma once
 
 #include <stdbool.h>
 
@@ -9,4 +8,3 @@
 #include "canbus_struct.h"
 // #include "byte_conversion.h"
 
-#endif /* end CANBUS_PROJECT_H */
