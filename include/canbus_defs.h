@@ -156,6 +156,7 @@ typedef enum {
     OUT_STATE_FOLLOW    = 0x04, /**< output following an external event */
     OUT_STATE_STROBE    = 0x05, /**< output is strobing */
     OUT_STATE_PWM       = 0x06, /**< output is pwm */
+    OUT_STATE_BLINK     = 0x07, /**< output is blinking, pwm with slower timing */
     OUT_STATE_DISABLED  = 0x80, /**< output is disabled */
     OUT_STATE_INVALID   = 0xFF, /**< invalid output state */
 } outputState_t;
@@ -172,6 +173,7 @@ typedef enum {
     OUT_MODE_FOLLOW     = 0x04, /**< output follows an external event */
     OUT_MODE_STROBE     = 0x05, /**< output strobes various timing patterns */
     OUT_MODE_PWM        = 0x06, /**< output uses pulse width modulation */
+    OUT_MODE_BLINK      = 0x07, /**< output blinks, pwm with slower timing */
     OUT_MODE_INVALID    = 0xFF, /**< invalid output mode */
 } outputMode_t;
 
