@@ -88,64 +88,81 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
-    /** structure to define a sub module */
-    typedef struct __attribute__((packed)) subModule_t
-    {
-        /* Hardware personality (defines pin, capabilities, etc.) */
-        uint8_t personalityId;
+  typedef enum {
+    PRODUCER_KIND_NONE = 0,     // Not a producer
+    PRODUCER_KIND_SWITCH_STATE, // ON/OFF/MOMENTARY
+    PRODUCER_KIND_LEVEL,        // Brightness, duty cycle, analog level
+    PRODUCER_KIND_SENSOR,       // ADC, temperature, etc.
+    PRODUCER_KIND_EVENT         // Button press, edge-triggered events
+  } producer_kind_t;
 
-        /* 24-bit user configuration (behavior-level only) */
-        union __attribute__((packed)) {
-            uint8_t rawConfig[3];
+  typedef struct __attribute__((packed)) {
+      uint8_t  kind;        // producer_kind_t
+      uint8_t  valueSource; // Which field to read (state, ADC value, config byte, etc.)
+      uint8_t  flags;       // PRODUCER_FLAG_* (change-only, invert, etc.)
+      uint8_t  reserved;    // alignment / future use
+  } producer_t;
 
-            struct { 
-                uint8_t mode;        // OUT_MODE_*
-                uint8_t param1;      // momentary duration / pwm freq / blink delay
-                uint8_t param2;      // pwm duty / strobe pattern / reserved
-            } gpioOutput;
+  /** structure to define a sub module */
+  typedef struct __attribute__((packed)) subModule_t
+  {
+    /* Hardware personality (defines pin, capabilities, etc.) */
+    uint8_t personalityId;
 
-            struct {
-                uint8_t pull;        // pull-up/down/float
-                uint8_t invert;      // logical inversion
-                uint8_t reserved;
-            } gpioInput;
+    /* 24-bit user configuration (behavior-level only) */
+    union __attribute__((packed)) {
+        uint8_t rawConfig[3];
 
-            struct {
-                uint8_t reserved;
-                uint8_t ledCount;
-                uint8_t colorOrder;
-            } argb;
+        struct { 
+            uint8_t mode;        // OUT_MODE_*
+            uint8_t param1;      // momentary duration / pwm freq / blink delay
+            uint8_t param2;      // pwm duty / strobe pattern / reserved
+        } gpioOutput;
 
-            struct {
-                uint16_t overSampleCnt;  /**< ADC oversampling count */
-                uint8_t  reserved;       /**< Padding - reserved */
-            } analogInput;
+        struct {
+            uint8_t pull;        // pull-up/down/float
+            uint8_t invert;      // logical inversion
+            uint8_t reserved;
+        } gpioInput;
 
-            /** Analog RGB/RGBW strips */
-            struct {
-                uint8_t  configIndex;    /**< led strip configuration index */
-                uint8_t  reserved1;       /**< Padding */
-                uint8_t  reserved2;       /**< Padding */
-            } analogStrip;
+        struct {
+            uint8_t reserved;
+            uint8_t ledCount;
+            uint8_t colorOrder;
+        } argb;
 
-            /** Analog DAC outputs */
-            struct {
-                uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
-                uint8_t  param1;         /**< output parameter byte 1 */
-                uint8_t  param2;         /**< output parameter byte 2 */
-            } analogOutput;
+        struct {
+            uint16_t overSampleCnt;  /**< ADC oversampling count */
+            uint8_t  reserved;       /**< Padding - reserved */
+        } analogInput;
 
-            /* Additional personalities as needed */
-        } config;
+        /** Analog RGB/RGBW strips */
+        struct {
+            uint8_t  configIndex;    /**< led strip configuration index */
+            uint8_t  reserved1;       /**< Padding */
+            uint8_t  reserved2;       /**< Padding */
+        } analogStrip;
 
-        /* User-level semantic identity */
-        uint16_t introMsgId;
-        uint8_t  introMsgDLC;
+        /** Analog DAC outputs */
+        struct {
+            uint8_t  outputMode;     /**< Index for output mode, 0 = one-shot, 1 = cosine  */
+            uint8_t  param1;         /**< output parameter byte 1 */
+            uint8_t  param2;         /**< output parameter byte 2 */
+        } analogOutput;
 
-        /* Per-submodule flags (bitfield) */
-        uint8_t flags;
+        /* Additional personalities as needed */
+    } config;
 
-    } subModule_t;
+    /* User-level semantic identity */
+    uint16_t introMsgId;
+    uint8_t  introMsgDLC;
+
+    /* Per-submodule flags (bitfield) */
+    uint8_t flags;
+
+    /* Producer configuration (behavior-level only) */
+    producer_t producer;   /**< NEW — dynamic producer personality */
+  } subModule_t;
 
 
 
