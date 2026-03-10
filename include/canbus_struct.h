@@ -1,5 +1,4 @@
-#ifndef CANBUS_STRUCT_H
-#define CANBUS_STRUCT_H
+#pragma once
 
 #ifndef CANBUS_DEFS_H
 #include "canbus_defs.h"
@@ -89,7 +88,6 @@ struct outputSwitch {
   };
 
   typedef struct __attribute__((packed)) {
-    uint8_t sub_idx;   /* submodule index */
     uint8_t rate_hz;   /* broadcast rate (0 = disabled) */
     uint8_t flags;     /* PRODUCER_FLAG_* */
     uint8_t reserved;  /* future use */
@@ -163,7 +161,8 @@ struct outputSwitch {
     /* User-level semantic identity */
     uint16_t introMsgId;
     uint8_t  introMsgDLC;
-
+    uint8_t  saveState;             /**< Save operational state to NVS (behavior-level only) */
+    
     /* Per-submodule flags (bitfield) */
     uint8_t flags;
 
@@ -195,5 +194,3 @@ struct outputSwitch {
     uint8_t raw[4];     // Up to 32 bits of runtime data
     uint8_t dlc;        // How many bytes are valid
 } submoduleRuntime_t;
-
-  #endif /* end CANBUS_STRUCT_H */
