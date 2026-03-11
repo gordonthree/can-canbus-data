@@ -15,26 +15,26 @@
  * @brief 64-bit Union for the CAN data payload.
  * Total size: 8 bytes.
  */
-typedef union {
-    uint64_t raw;
-    struct __attribute__((packed)) {
-        uint32_t nodeID;      /**< D0-D3 */
-        uint8_t  data_d4;     /**< D4 */
-        uint8_t  data_d5;     /**< D5 */
-        uint8_t  data_d6;     /**< D6 */
-        uint8_t  data_d7;     /**< D7 */
-    } fields; /**< 64-bit union */
-} CANMessagePayload;
+// typedef union {
+//     uint64_t raw;
+//     struct __attribute__((packed)) {
+//         uint32_t nodeID;      /**< D0-D3 */
+//         uint8_t  data_d4;     /**< D4 */
+//         uint8_t  data_d5;     /**< D5 */
+//         uint8_t  data_d6;     /**< D6 */
+//         uint8_t  data_d7;     /**< D7 */
+//     } fields; /**< 64-bit union */
+// } CANMessagePayload;
 
 /**
  * @brief Complete CAN Message structure for RTOS Queues/Pools.
  * This wraps the ID and the Payload together.
  */
-typedef struct {
-    CANMessagePayload payload; /**< The 8-byte data block */
-    uint32_t canID;            /**< The CAN Arbitration ID */
-    uint8_t  DLC;              /**< Data Length Code */
-  } CAN_Msg_t;
+// typedef struct {
+//     CANMessagePayload payload; /**< The 8-byte data block */
+//     uint32_t canID;            /**< The CAN Arbitration ID */
+//     uint8_t  DLC;              /**< Data Length Code */
+//   } node_CAN_Msg_t;
   
 
 /* output switches */
