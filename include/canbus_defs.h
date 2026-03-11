@@ -35,7 +35,6 @@
 #define NODE_MOD_MAX_cnt       (8U)        /* maximum number of modules per node */
 #define NODE_MOD_MSG_SIZE      (2U)        /* enough room for an 11-bit message ID */
 #define FEATURE_MASK_SIZE      (2U)        /* size of feature mask in bytes */
-#define CAN_MAX_DLC            (8U)        /* maximum number of bytes in a legal CAN message */
 
 /**
  * Define clear return values for various error conditions
