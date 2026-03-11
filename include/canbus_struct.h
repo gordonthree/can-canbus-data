@@ -93,14 +93,6 @@ struct outputSwitch {
     uint8_t reserved;  /* future use */
   } producer_cfg_t;
 
-  typedef enum {
-    PRODUCER_KIND_NONE = 0,     // Not a producer
-    PRODUCER_KIND_SWITCH_STATE, // ON/OFF/MOMENTARY
-    PRODUCER_KIND_LEVEL,        // Brightness, duty cycle, analog level
-    PRODUCER_KIND_SENSOR,       // ADC, temperature, etc.
-    PRODUCER_KIND_EVENT         // Button press, edge-triggered events
-  } producer_kind_t;
-
   typedef struct __attribute__((packed)) {
       uint8_t  kind;        // producer_kind_t
       uint8_t  valueSource; // Which field to read (state, ADC value, config byte, etc.)
