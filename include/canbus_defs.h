@@ -199,4 +199,17 @@ typedef enum strobePattern_t {
     STROBE_PATTERN_5 = 0x05, /**< tbd */
 } strobePattern_t;
 
-
+/**
+ * @brief Enum for individual data bytes in a CAN message
+ * @enum msg_data_t
+ */
+typedef enum {
+    MSG_DATA_0 = 0,
+    MSG_DATA_1,
+    MSG_DATA_2,
+    MSG_DATA_3,
+    MSG_DATA_4,
+    MSG_DATA_5,
+    MSG_DATA_6,
+    MSG_DATA_7
+} msg_data_t;
