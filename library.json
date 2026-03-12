@@ -1,11 +1,27 @@
 {
   "name": "can-canbus-data",
   "version": "1.0.0",
+  "description": "Structures, enumerations and constants for the CAN-CTL CAN bus project.",
+  "keywords": [
+    "can",
+    "twai",
+    "platform",
+    "abstraction",
+    "esp32",
+    "stm32"
+  ],
+  "authors": [
+    {
+      "name": "Gordon McLellan",
+      "maintainer": true
+    }
+  ],
+  "frameworks": "*",
+  "platforms": "*",
   "build": {
-    "srcFilter": [
-      "+<*>",
-      "-<venv/>",
-      "-<**/venv/*>"
+    "includeDir": "include",
+    "flags": [
+      "-I include"
     ]
   }
 }
