@@ -1,13 +1,7 @@
 #pragma once
 
-#ifndef CANBUS_DEFS_H
 #include "canbus_defs.h"
-#endif
-
-#ifndef CANBUS_FLAGS_H
 #include "canbus_flags.h"
-#include "canbus_defs.h"
-#endif
 
 #include <stdint.h>
 
@@ -38,32 +32,32 @@
   
 
 /* output switches */
-struct outputSwitch {  
-    uint32_t lastSeen;               /* last time seen */
-    uint16_t pwmDuty;                /* pwm duty cycle */
-    uint16_t pwmFreq;                /* pwm frequency */
-    uint16_t blinkDelay;             /* blink delay in ms */
-    uint16_t momPressDur;            /* momentary press duration in ms */
-    uint8_t  swState;                /* switch state on, off, momentary */
-    uint8_t  swMode;                 /* switch mode 0 toggle, 1 momentary, 2 blinking, 3 strobe, 4 pwm, 5 disabled */
-    uint8_t  swType;                 /* mosfet, relay, sink */
-    uint8_t  featuresMask[2];        /* feature mask */
-    uint8_t  strobePat;              /* strobe pattern */
-    uint8_t  stateMemory;            /* state memory */
-  };
+// struct outputSwitch {  
+//     uint32_t lastSeen;               /* last time seen */
+//     uint16_t pwmDuty;                /* pwm duty cycle */
+//     uint16_t pwmFreq;                /* pwm frequency */
+//     uint16_t blinkDelay;             /* blink delay in ms */
+//     uint16_t momPressDur;            /* momentary press duration in ms */
+//     uint8_t  swState;                /* switch state on, off, momentary */
+//     uint8_t  swMode;                 /* switch mode 0 toggle, 1 momentary, 2 blinking, 3 strobe, 4 pwm, 5 disabled */
+//     uint8_t  swType;                 /* mosfet, relay, sink */
+//     uint8_t  featuresMask[2];        /* feature mask */
+//     uint8_t  strobePat;              /* strobe pattern */
+//     uint8_t  stateMemory;            /* state memory */
+//   };
 
   /* various sensors */
-  struct outputSensor {
-    float    fltValue;               /* floating point */
-    uint32_t lastUpdate;             /* timestamp */
-    int32_t  i32Value;               /* signed long int */
-    uint16_t sensorType;             /* sensor type */
-    uint16_t sensorMsg;              /* send our data using this message id */
-    uint8_t  featuresMask[2];        /* feature mask */
-    uint8_t  dataSize;               /* how many bytes is the data, more than 4 requires a private message */
-    bool     present;                /* flag indicating sensor presence */
-    bool     privMsg;                /* set to true when controller assigns us a private msg channel */
-  };
+  // struct outputSensor {
+  //   float    fltValue;               /* floating point */
+  //   uint32_t lastUpdate;             /* timestamp */
+  //   int32_t  i32Value;               /* signed long int */
+  //   uint16_t sensorType;             /* sensor type */
+  //   uint16_t sensorMsg;              /* send our data using this message id */
+  //   uint8_t  featuresMask[2];        /* feature mask */
+  //   uint8_t  dataSize;               /* how many bytes is the data, more than 4 requires a private message */
+  //   bool     present;                /* flag indicating sensor presence */
+  //   bool     privMsg;                /* set to true when controller assigns us a private msg channel */
+  // };
   
   /* IMU sensor data */
 /*  struct imuDataType {
@@ -78,35 +72,53 @@ struct outputSwitch {
   };
   */
  
-  struct remoteNode {
-    uint32_t  lastSeen;       /**< last time message received from node */
-    uint32_t  firstSeen;      /**< first time message received from node */
-    uint32_t  nodeID;         /**< 32-bit node id number */
-    uint16_t  nodeType;       /**< 11-bit can bus message id and node type */
-    uint8_t   subModuleCount; /**< count of sub modules associated with this node */
-    uint8_t   featureMask[2]; /**< node feature mask storage */
-  };
+  // struct remoteNode {
+  //   uint32_t  lastSeen;       /**< last time message received from node */
+  //   uint32_t  firstSeen;      /**< first time message received from node */
+  //   uint32_t  nodeID;         /**< 32-bit node id number */
+  //   uint16_t  nodeType;       /**< 11-bit can bus message id and node type */
+  //   uint8_t   subModuleCount; /**< count of sub modules associated with this node */
+  //   uint8_t   featureMask[2]; /**< node feature mask storage */
+  // };
 
-  typedef struct __attribute__((packed)) {
-    uint8_t rate_hz;   /* broadcast rate (0 = disabled) */
-    uint8_t flags;     /* PRODUCER_FLAG_* */
-    uint8_t reserved;  /* future use */
-  } producer_cfg_t;
 
-  typedef struct __attribute__((packed)) {
-      uint8_t  kind;        // producer_kind_t
-      uint8_t  valueSource; // Which field to read (state, ADC value, config byte, etc.)
-      uint8_t  flags;       // PRODUCER_FLAG_* (change-only, invert, etc.)
-      uint8_t  reserved;    // alignment / future use
-  } producer_t;
+/**
+ * @brief Structure to define a producer and hold its runtime state
+ */
+typedef struct __attribute__((packed))
+{
+    /* ============================
+     *  RUNTIME SNAPSHOT
+     * ============================ */
+    uint32_t last_change_ms;        /**< Timestamp of last state change (ms) */
+    uint32_t adc_value;             /**< Last sampled ADC value */
+    uint8_t  state;                 /**< Logical digital input state */
+    uint8_t  last_hardware_output;  /**< Last value written to the hardware output pin */
 
-  /** structure to define a sub module */
+    /* ============================
+     *  PRODUCER CONFIG
+     * ============================ */
+    uint8_t  kind;                  /**< Producer kind (producer_kind_t) */
+    uint8_t  valueSource;           /**< Which runtime field to publish */
+    uint16_t period_ms;             /**< Publish period in milliseconds (0 = disabled) */
+
+    /* ============================
+     *  PRODUCER RUNTIME
+     * ============================ */
+    uint32_t last_published_value;  /**< Last value sent over CAN for change-only detection */
+
+} runTime_t;
+
+
+  /** 
+   * @brief structure to define a sub module */
   typedef struct __attribute__((packed)) subModule_t
   {
-    /* Hardware personality (defines pin, capabilities, etc.) */
+    /** Hardware personality (defines pin, capabilities, etc.) */
     uint8_t personalityId;
 
-    /* 24-bit user configuration (behavior-level only) */
+    /**
+     * @note 24-bit user configuration (behavior-level only) */
     union __attribute__((packed)) {
         uint8_t rawConfig[3];
 
@@ -153,24 +165,24 @@ struct outputSwitch {
     /* User-level semantic identity */
     uint16_t introMsgId;
     uint8_t  introMsgDLC;
-    uint8_t  saveState;             /**< Save operational state to NVS (behavior-level only) */
     
-    /* Per-submodule flags (bitfield) */
-    uint8_t flags;
+    /* Per-function flags (bitfield) */
+    uint8_t submod_flags;           /**< SUBMOD_FLAG_* */
+    uint8_t router_flags;           /**< ROUTER_FLAG_* */
+    uint8_t producer_flags;         /**< PRODUCER_FLAG_* */
 
-    /* Producer configuration (behavior-level only) */
-    producer_t     producer;      /**< dynamic producer personality */
-    producer_cfg_t producer_cfg;  /**< producer configuration */
+    /* Producer configuration and runtime data */
+    runTime_t runTime;              /**< Producer config and current runtime state */
   } subModule_t;
 
 
 
   struct __attribute__((packed)) nodeInfo_t {                                 
-    struct subModule_t subModule[8]; /**< Sub module configurations associated with this node */
-    uint32_t  nodeID;                 /**< Unique 32-bit node id number. */
-    uint16_t  nodeTypeMsg;            /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
-    uint8_t   nodeTypeDLC;            /**< Data length code for the node type message. */
-    uint8_t   subModCnt;              /**< Sub module count for this node. */
+    subModule_t subModule[MAX_SUB_MODULES]; /**< Sub module configurations associated with this node */
+    uint32_t    nodeID;                     /**< Unique 32-bit node id number. */
+    uint16_t    nodeTypeMsg;                /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
+    uint8_t     nodeTypeDLC;                /**< Data length code for the node type message. */
+    uint8_t     subModCnt;                  /**< Sub module count for this node. */
   };    
 
   struct __attribute__((packed)) colorPickerList_t {
@@ -182,7 +194,7 @@ struct outputSwitch {
     uint8_t   colorIndex;             /**< color index on the custom 32 color palette */
   }; /**< Storage structure for nodes with a color picker, used for remote control */
 
-  typedef struct __attribute__((packed)) {
-    uint8_t raw[4];     // Up to 32 bits of runtime data
-    uint8_t dlc;        // How many bytes are valid
-} submoduleRuntime_t;
+//   typedef struct __attribute__((packed)) {
+//     uint8_t raw[4];     // Up to 32 bits of runtime data
+//     uint8_t dlc;        // How many bytes are valid
+// } submoduleRuntime_t;
