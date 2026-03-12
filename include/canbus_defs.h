@@ -81,9 +81,13 @@
 /**
  * @brief Sub-module configuration constants
  */
+#define SUBMOD_FLAG_NONE         (0U)        /**< No flags set or available */
 #define SUBMOD_FLAG_SAVE_STATE   (1U << 0)   /**< Save output state to non-volatile memory */
 #define SUBMOD_FLAG_DIRTY        (1U << 1)   /**< Sub-module state has changed */
 
+/* === Byte shifting macros === */
+#define BYTE_SHIFT  (8)
+#define BYTE_MASK   (0xFF)
 
 /* === ENUMERATIONS === */
 
