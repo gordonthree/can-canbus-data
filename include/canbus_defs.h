@@ -7,13 +7,15 @@
 #define CAN_TX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the TX queue */
 #define CAN_RX_QUEUE_LEN       (16)        /**< Max number of CAN messages in the RX queue */
 #define CAN_MSG_POOL_LEN       (16)        /**< Max number of CAN messages in the pool */
-#define PWM_SCALING_FACTOR     (100U)
-#define MOM_SW_SCALING_FACTOR  (10U)
-#define BLINK_SCALING_FACTOR   (1U)
+#define PWM_SCALING_FACTOR     (100U)      /**< Scaling factor for PWM frequency */
+#define MOM_SW_SCALING_FACTOR  (10U)       /**< Scaling factor for momentary switch delay */
+#define BLINK_SCALING_FACTOR   (1U)        /**< Scaling factor for blink values */
 #define LEDC_MAX_TIMERS        (4U)        /* there are four low speed timers, allow one LED per timer */
 #define MAX_PIXEL_COUNT        (255U)      /* Maximum LEDs supported per submodule */
 #define MAX_ARGB_STRIPS        (1U)        /* Maximum ARGB strips supported per node */
 #define CAN_ERROR_AGE_MS       (30000U)    /* forget errors after 30 seconds */
+#define NODE_INTRO_PTR_START   (0)         /**< starting pointer for the node intro process */
+#define NODE_VSUBMODULE_BASE   (0x80U)     /**< base address for virtual submodules 0x80-0xFF */
 
 
 /* module limits */
@@ -34,6 +36,7 @@
 #define NODE_ID_SIZE           (4U)        /* node ID length in bytes */
 #define NODE_MOD_MAX_cnt       (8U)        /* maximum number of modules per node */
 #define NODE_MOD_MSG_SIZE      (2U)        /* enough room for an 11-bit message ID */
+#define NODE_DATAMSG_MIN_DLC   (6U)        /**< Minimum data length for a data message */
 #define FEATURE_MASK_SIZE      (2U)        /* size of feature mask in bytes */
 
 /**
