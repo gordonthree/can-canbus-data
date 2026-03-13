@@ -175,12 +175,13 @@ struct outputSwitch {
     uint8_t  introMsgDLC;
     uint8_t  saveState;             /**< Save operational state to NVS (behavior-level only) */
     
-    /* Per-submodule flags (bitfield) */
-    uint8_t flags;
+    /* Per-function flags (bitfield) */
+    uint8_t submod_flags;           /**< SUBMOD_FLAG_* */
+    uint8_t router_flags;           /**< ROUTER_FLAG_* */
+    uint8_t producer_flags;         /**< PRODUCER_FLAG_* */
 
-    /* Producer configuration (behavior-level only) */
-    producer_t     producer;      /**< dynamic producer personality */
-    producer_cfg_t producer_cfg;  /**< producer configuration */
+    /* Producer configuration and runtime data */
+    runTime_t runTime;              /**< Producer config and current runtime state */
   } subModule_t;
 
 
