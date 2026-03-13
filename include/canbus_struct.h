@@ -87,6 +87,34 @@ struct outputSwitch {
     uint8_t   featureMask[2]; /**< node feature mask storage */
   };
 
+  /**
+   * @brief Structure to define a producer and hold its runtime state
+   */
+  typedef struct __attribute__((packed))
+  {
+      /* ============================
+      *  RUNTIME SNAPSHOT
+      * ============================ */
+      uint32_t last_change_ms;        /**< Timestamp of last state change (ms) */
+      uint32_t adc_value;             /**< Last sampled ADC value */
+      uint8_t  state;                 /**< Logical digital input state */
+      uint8_t  last_hardware_output;  /**< Last value written to the hardware output pin */
+
+      /* ============================
+      *  PRODUCER CONFIG
+      * ============================ */
+      uint8_t  kind;                  /**< Producer kind (producer_kind_t) */
+      uint8_t  valueSource;           /**< Which runtime field to publish */
+      uint16_t period_ms;             /**< Publish period in milliseconds (0 = disabled) */
+
+      /* ============================
+      *  PRODUCER RUNTIME
+      * ============================ */
+      uint32_t last_published_value;  /**< Last value sent over CAN for change-only detection */
+
+  } runTime_t;
+
+
   typedef struct __attribute__((packed)) {
     uint8_t rate_hz;   /* broadcast rate (0 = disabled) */
     uint8_t flags;     /* PRODUCER_FLAG_* */
@@ -100,6 +128,7 @@ struct outputSwitch {
       uint8_t  reserved;    // alignment / future use
   } producer_t;
 
+  
   /** structure to define a sub module */
   typedef struct __attribute__((packed)) subModule_t
   {
