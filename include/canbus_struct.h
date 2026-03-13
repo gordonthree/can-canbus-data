@@ -1,14 +1,5 @@
 #pragma once
 
-#ifndef CANBUS_DEFS_H
-#include "canbus_defs.h"
-#endif
-
-#ifndef CANBUS_FLAGS_H
-#include "canbus_flags.h"
-#include "canbus_defs.h"
-#endif
-
 #include <stdint.h>
 
 /**
