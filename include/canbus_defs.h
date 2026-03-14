@@ -81,32 +81,34 @@
 /**
  * @brief Sub-module configuration constants
  */
+#define SUBMOD_FLAG_NONE         (0U)        /**< No flags */
 #define SUBMOD_FLAG_SAVE_STATE   (1U << 0)   /**< Save output state to non-volatile memory */
 #define SUBMOD_FLAG_DIRTY        (1U << 1)   /**< Sub-module state has changed */
+#define SUBMOD_FLAG_DISABLED     (1U << 2)   /**< Sub-module is disabled */
+#define SUBMOD_FLAG_READ_ONLY    (1U << 3)   /**< Sub-module is read-only */
+#define SUBMOD_FLAG_VIRTUAL      (1U << 4)   /**< Sub-module is virtual */
+#define SUBMOD_FLAG_DISPLAY      (1U << 5)   /**< Sub-module is a display or ui element */
+#define SUBMOD_FLAG_INPUT        (1U << 6)   /**< Sub-module is an input */
+#define SUBMOD_FLAG_OUTPUT       (1U << 7)   /**< Sub-module is an output */
 
 
 /* === ENUMERATIONS === */
 
-/**
- * @enum ledc13bitDuty_t
- * Enum for 13-bit LEDC duty cycles
- */
-typedef enum {
-    LEDC_13BIT_0PCT   = 0,    /**< 0% is 0 */
-    LEDC_13BIT_10PCT  = 819,  /**< 10% of 2^13 */
-    LEDC_13BIT_25PCT  = 2048, /**< 25% of 2^13 */
-    LEDC_13BIT_50PCT  = 4096, /**< 50% of 2^13 */
-    LEDC_13BIT_100PCT = 8192, /**< 100% of 2^13 */
-} ledc13bitDuty_t;
+/* 13-bit LEDC duty cycles */
+#define LEDC_13BIT_0PCT           (0)        /**< 0% is 0 */
+#define LEDC_13BIT_10PCT          (819)      /**< 10% of 2^13 */
+#define LEDC_13BIT_25PCT          (2048)     /**< 25% of 2^13 */
+#define LEDC_13BIT_50PCT          (4096)     /**< 50% of 2^13 */
+#define LEDC_13BIT_100PCT         (8192)     /**< 100% of 2^13 */
 
 /**
  * @enum gpioInputRes_t
  * @brief GPIO Resistor configuration
  */
 typedef enum {
-    INPUT_RES_PULLUP, /**< Internal pull-up resistor enabled */
+    INPUT_RES_PULLUP,   /**< Internal pull-up resistor enabled */
     INPUT_RES_PULLDOWN, /**< Internal pull-down resistor enabled */
-    INPUT_RES_FLOATING /**< No internal resistor */
+    INPUT_RES_FLOATING  /**< No internal resistor */
 } gpioInputRes_t;
 
 /**
@@ -132,6 +134,15 @@ typedef enum {
     ANALOG_STRIP_RGBA,
     ANALOG_STRIP_RGBCCT
 } analogStrip_t;
+
+typedef enum {
+    ARGB_COLOR_ORDER_RGB = 0,
+    ARGB_COLOR_ORDER_BGR,
+    ARGB_COLOR_ORDER_RGBA,
+    ARGB_COLOR_ORDER_BGRA,
+    ARGB_COLOR_ORDER_RGBW,
+    ARGB_COLOR_ORDER_BGRW
+} argbColorOrder_t;
 
 /**
  * @enum displayMode_t
