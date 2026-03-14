@@ -92,7 +92,6 @@
 #define SUBMOD_FLAG_OUTPUT       (1U << 7)   /**< Sub-module is an output */
 
 
-/* === ENUMERATIONS === */
 
 /* 13-bit LEDC duty cycles */
 #define LEDC_13BIT_0PCT           (0)        /**< 0% is 0 */
@@ -100,6 +99,23 @@
 #define LEDC_13BIT_25PCT          (2048)     /**< 25% of 2^13 */
 #define LEDC_13BIT_50PCT          (4096)     /**< 50% of 2^13 */
 #define LEDC_13BIT_100PCT         (8192)     /**< 100% of 2^13 */
+
+/* === ENUMERATIONS === */
+
+/* analog output mode enum */
+typedef enum {
+    DAC_MODE_ONESHOT = 0,
+    DAC_MODE_CONTINUOUS
+} analogMode_t;
+
+/* analog sample count enum */
+typedef enum {
+    OVERSAMPLE_ESP32_MINIMUM = 0, 
+    OVERSAMPLE_ESP32_LOW,
+    OVERSAMPLE_ESP32_MEDIUM,
+    OVERSAMPLE_ESP32_HIGH,
+    OVERSAMPLE_ESP32_MAXIMUM
+} analogOversampleCnt_t;
 
 /**
  * @enum gpioInputRes_t
