@@ -14,7 +14,10 @@
 #define MAX_PIXEL_COUNT        (255U)      /* Maximum LEDs supported per submodule */
 #define MAX_ARGB_STRIPS        (1U)        /* Maximum ARGB strips supported per node */
 #define CAN_ERROR_AGE_MS       (30000U)    /* forget errors after 30 seconds */
-
+#define BYTE_SHIFT3            (24U)       /**< shift 3 bytes */
+#define BYTE_SHIFT2            (16U)       /**< shift 2 bytes */
+#define BYTE_SHIFT             (8U)        /**< shift single byte */
+#define BYTE_MASK              (0xFFU)     /**< mask for byte access */
 
 /* module limits */
 #define MAX_ARGB_SUBMODULES    (4U)        /**< Hardware limit for ARGB strips */
@@ -24,6 +27,7 @@
 /* CAN constants */
 #define CAN_MAX_DLC            (8U)
 #define CAN_NODE_ID_LEN        (4U)
+#define CAN_DATAMSG_MIN_DLC    (6U)         /**< Minimum data message length */
 
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
