@@ -130,28 +130,29 @@
 #define INPUT_FLAG_RESERVED_7       (0x80U)  /**< bit 7 */
 
 /* === Producer Constants === */
-#define PRODUCER_FLAG_NONE         (0x00U)
-#define PRODUCER_FLAG_ENABLED      (0x01U)
-#define PRODUCER_FLAG_CHANGE_ONLY  (0x02U)
+#define PRODUCER_FLAG_NONE         (0x00U)   /**< Producer publishing disabled */
+#define PRODUCER_FLAG_ENABLED      (0x01U)   /**< Producer publishing enabled */
+#define PRODUCER_FLAG_CHANGE_ONLY  (0x02U)   /**< Producer publish on change only */
 #define PRODUCER_FLAG_RESERVED1    (0x04U)
 #define PRODUCER_FLAG_RESERVED2    (0x08U)
 
-#define DEFAULT_PUBLISH_RATE        1000  /**< Default publish period in ms (1 Hz) */
-#define PRODUCER_PUBLISH_DISABLED   0
+#define DEFAULT_PUBLISH_RATE       (1000U)    /**< Default publish period in ms (1 Hz) */
+#define PRODUCER_PUBLISH_DISABLED  (0U)       /**< Publish period disabled */
 
-#define PRODUCER_RATEMS_1HZ        (1000U)    /**< 1000ms 1 Hz */
-#define PRODUCER_RATEMS_10HZ       (100U)     /**< 100ms 10 Hz */
-#define PRODUCER_RATEMS_100HZ      (10U)      /**< 10ms 100 Hz */
+#define PRODUCER_RATEMS_1HZ        (1000U)    /**< Publish period 1000ms 1 Hz */
+#define PRODUCER_RATEMS_10HZ       (100U)     /**< Publish period 100ms 10 Hz */
+#define PRODUCER_RATEMS_100HZ      (10U)      /**< Publish period 10ms 100 Hz */
 
 /* === GPIO ISR Constants === */
+
 /* Momentary mode output values */
-#define MOMENTARY_RELEASE_VALUE     (10u)
-#define MOMENTARY_ACTIVE_VALUE      (11u)
+#define MOMENTARY_RELEASE_VALUE     (10u)     /**< Flag to indicate momentary button release state */
+#define MOMENTARY_ACTIVE_VALUE      (11u)     /**< Flag to indicate momentary button active state */
 
 /* Normal mode */
-#define GPIO_LONG_PRESS             (2U)
-#define GPIO_DOUBLE_CLICK           (3U)
-#define GPIO_SINGLE_CLICK           (1U)
+#define GPIO_LONG_PRESS             (2U)       /**< Long press flag */
+#define GPIO_DOUBLE_CLICK           (3U)       /**< Double click flag */
+#define GPIO_SINGLE_CLICK           (1U)       /**< Single click flag */
 /**
  * @brief Producer behavioral type.
  */
@@ -194,13 +195,13 @@ typedef enum {
 /* input switch type */
 typedef enum {
     INPUT_MODE_NORMAL    = 0,  /**< click / long press / double click */
-    INPUT_MODE_MOMENTARY = 1,  /**< hold = active, release = inactive */
-    INPUT_MODE_TOGGLE    = 2,  /**< press toggles state */
-    INPUT_MODE_LATCH     = 3,  /**< press sets, second press clears */
-    INPUT_MODE_RESERVED4 = 4,
-    INPUT_MODE_RESERVED5 = 5,
-    INPUT_MODE_RESERVED6 = 6,
-    INPUT_MODE_RESERVED7 = 7
+    INPUT_MODE_MOMENTARY ,     /**< hold = active, release = inactive */
+    INPUT_MODE_TOGGLE    ,     /**< press toggles state */
+    INPUT_MODE_LATCH     ,     /**< press sets, second press clears */
+    INPUT_MODE_RESERVED4 ,     /**< reserved input mode */
+    INPUT_MODE_RESERVED5 ,     /**< reserved input mode */
+    INPUT_MODE_RESERVED6 ,     /**< reserved input mode */
+    INPUT_MODE_RESERVED7       /**< reserved input mode */
 } inputModeType_t;
 
 
