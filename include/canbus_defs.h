@@ -95,6 +95,39 @@
 #define SUBMOD_FLAG_INPUT        (1U << 6)   /**< Sub-module is an input */
 #define SUBMOD_FLAG_OUTPUT       (1U << 7)   /**< Sub-module is an output */
 
+/* Input mode flag masks */
+#define INPUT_FLAG_MASK_PULL     (0x03U)   /**< Pull-up or pull-down 0b0000 0011 */
+#define INPUT_FLAG_MASK_INV      (0x04U)   /**< Invert logic 0b0000 0100 */
+#define INPUT_FLAG_MASK_MODE     (0x38U)   /**< Input mode 0b0011 1000 */
+#define INPUT_FLAG_MASK_RESERVED (0xC0U)   /**< Reserved 0b1100 0000 */
+
+/* Input flag getters */
+#define INPUT_FLAG_GET_PULL(f)   ((f) & INPUT_FLAG_MASK_PULL)                               /**< Get the input resistor mode */
+#define INPUT_FLAG_GET_INV(f)    (((f) & INPUT_FLAG_MASK_INV)  >> 2)                         /**< Get the logic invert state */
+#define INPUT_FLAG_GET_MODE(f)   (((f) & INPUT_FLAG_MASK_MODE) >> 3)                        /**< Get the input switch type mode */
+
+/* Input flag setters */
+#define INPUT_FLAG_SET_PULL(f,v)  (((f) & ~INPUT_FLAG_MASK_PULL) | ((v) & 0x03))             /**< Set the input resistor mode */
+#define INPUT_FLAG_SET_INV(f,v)   (((f) & ~INPUT_FLAG_MASK_INV)  | (((v) & 0x01) << 2))      /**< Set the logic invert state */
+#define INPUT_FLAG_SET_MODE(f,v)  (((f) & ~INPUT_FLAG_MASK_MODE) | (((v) & 0x07) << 3))      /**< Set the input switch type mode */
+
+/* Input resistor modes */
+#define INPUT_FLAG_PULL_FLOAT      (0x00U)  /**< 00: floating */
+#define INPUT_FLAG_PULL_UP         (0x01U)  /**< 01: pull-up */
+#define INPUT_FLAG_PULL_DOWN       (0x02U)  /**< 10: pull-down */
+
+/* Input logic invert states */
+#define INPUT_FLAG_INVERT           (0x04U)  /**< 1 << 2: invert logic */
+
+/* Input switch type modes */
+#define INPUT_FLAG_MODE_NORMAL      (0x00U)  /**< 000 << 3 */
+#define INPUT_FLAG_MODE_MOMENTARY   (0x08U)  /**< 001 << 3 */
+#define INPUT_FLAG_MODE_TOGGLE      (0x10U)  /**< 010 << 3 */
+#define INPUT_FLAG_MODE_LATCH       (0x18U)  /**< 011 << 3 */
+
+/* input flags - reserved */
+#define INPUT_FLAG_RESERVED_6       (0x40U)  /**< bit 6 */
+#define INPUT_FLAG_RESERVED_7       (0x80U)  /**< bit 7 */
 
 
 /* 13-bit LEDC duty cycles */
@@ -105,6 +138,34 @@
 #define LEDC_13BIT_100PCT         (8192)     /**< 100% of 2^13 */
 
 /* === ENUMERATIONS === */
+
+
+/* input resistor mode (pull-mode) */
+typedef enum {
+    INPUT_PULL_FLOAT   = 0,  /**< 00: floating */
+    INPUT_PULL_UP      = 1,  /**< 01: pull-up */
+    INPUT_PULL_DOWN    = 2,  /**< 10: pull-down */
+    INPUT_PULL_RSVD    = 3   /**< 11: reserved */
+} inputPull_t;
+
+/* logic invert states */
+typedef enum {
+    INPUT_INV_OFF = 0,  /**< normal logic */
+    INPUT_INV_ON  = 1   /**< inverted logic */
+} inputInvert_t;
+
+/* input switch type */
+typedef enum {
+    INPUT_MODE_NORMAL    = 0,  /**< click / long press / double click */
+    INPUT_MODE_MOMENTARY = 1,  /**< hold = active, release = inactive */
+    INPUT_MODE_TOGGLE    = 2,  /**< press toggles state */
+    INPUT_MODE_LATCH     = 3,  /**< press sets, second press clears */
+    INPUT_MODE_RESERVED4 = 4,
+    INPUT_MODE_RESERVED5 = 5,
+    INPUT_MODE_RESERVED6 = 6,
+    INPUT_MODE_RESERVED7 = 7
+} inputModeType_t;
+
 
 /* analog output mode enum */
 typedef enum {
