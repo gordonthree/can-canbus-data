@@ -145,6 +145,10 @@
 
 /* === GPIO ISR Constants === */
 
+/* GPIO state values */
+#define GPIO_LEVEL_LOW              (0U)      /**< Low level output */
+#define GPIO_LEVEL_HIGH             (1U)      /**< High level output */
+
 /* Momentary mode output values */
 #define MOMENTARY_RELEASE_VALUE     (10u)     /**< Flag to indicate momentary button release state */
 #define MOMENTARY_ACTIVE_VALUE      (11u)     /**< Flag to indicate momentary button active state */
