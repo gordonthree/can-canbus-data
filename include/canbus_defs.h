@@ -173,11 +173,11 @@ typedef enum
 } producer_kind_t;
 
 /* 13-bit LEDC duty cycles */
-#define LEDC_13BIT_0PCT           (0)        /**< 0% is 0 */
-#define LEDC_13BIT_10PCT          (819)      /**< 10% of 2^13 */
-#define LEDC_13BIT_25PCT          (2048)     /**< 25% of 2^13 */
-#define LEDC_13BIT_50PCT          (4096)     /**< 50% of 2^13 */
-#define LEDC_13BIT_100PCT         (8192)     /**< 100% of 2^13 */
+#define LEDC_13BIT_0PCT           (0U)        /**< 0% is 0 */
+#define LEDC_13BIT_10PCT          (819U)      /**< 10% of 2^13 */
+#define LEDC_13BIT_25PCT          (2048U)     /**< 25% of 2^13 */
+#define LEDC_13BIT_50PCT          (4096U)     /**< 50% of 2^13 */
+#define LEDC_13BIT_100PCT         (8192U)     /**< 100% of 2^13 */
 
 /* === ENUMERATIONS === */
 
