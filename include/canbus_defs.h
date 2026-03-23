@@ -21,7 +21,7 @@
 
 /* module limits */
 #define MAX_ARGB_SUBMODULES    (4U)        /**< Hardware limit for ARGB strips */
-#define MAX_SUB_MODULES        (8U)        /**< Memory limit for submodules */
+#define MAX_SUB_MODULES        (40U)       /**< Memory limit for submodules */
 #define MAX_REMOTE_NODES       (8U)        /**< Memory limit for remote nodes */
 
 /* CAN constants */
