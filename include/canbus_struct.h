@@ -95,3 +95,19 @@ struct outputSwitch {
     uint8_t raw[4];     // Up to 32 bits of runtime data
     uint8_t dlc;        // How many bytes are valid
 } submoduleRuntime_t;
+
+
+typedef union __attribute__((packed)) {
+    uint32_t value;
+
+    struct __attribute__((packed)) {
+        uint32_t logicalState    : 1;  // before inversion
+        uint32_t electricalState : 1;  // after inversion
+        uint32_t hizOff          : 1;
+        uint32_t hizOn           : 1;
+        uint32_t inverted        : 1;
+        uint32_t openDrain       : 1;
+        uint32_t reserved        : 18;
+    } bits;
+
+} gpioExtendedRuntime_t;
