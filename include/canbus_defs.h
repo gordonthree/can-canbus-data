@@ -24,6 +24,8 @@
 #define MAX_SUB_MODULES        (40U)       /**< Memory limit for submodules */
 #define MAX_REMOTE_NODES       (8U)        /**< Memory limit for remote nodes */
 
+#define MAX_RUNTIME_PERSONALITIES   (MAX_SUB_MODULES * 2) /**< Memory limit for personalities */
+
 /* CAN constants */
 #define CAN_MAX_DLC            (8U)
 #define CAN_NODE_ID_LEN        (4U)
