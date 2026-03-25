@@ -1,5 +1,4 @@
-#ifndef BYTE_CONVERSION_H
-#define BYTE_CONVERSION_H
+#pragma once
 
 #include <stdint.h>
 #include <string.h>
@@ -69,11 +68,9 @@ static inline void BC_Chunk16(uint16_t inVal, uint8_t* outArray) {
  * @param bytes The 4-byte array to convert.
  * @return The converted uint32_t.
  */
-uint32_t packBytes32(const uint8_t* bytes) {
+static inline uint32_t packBytes32(const uint8_t* bytes) {
     return ((uint32_t)bytes[0] << 24) |
            ((uint32_t)bytes[1] << 16) |
            ((uint32_t)bytes[2] << 8)  |
             (uint32_t)bytes[3];
 }
-
-#endif // BYTE_CONVERSION_H
