@@ -19,11 +19,14 @@
 #define BYTE_SHIFT             (8U)        /**< shift single byte */
 #define BYTE_MASK              (0xFFU)     /**< mask for byte access */
 
+#define DATA_SUBMOD_IDX_OFFSET (4U)
+#define DATA_PERS_ID_OFFSET    (5U)
+
 /* module limits */
 #define MAX_ARGB_SUBMODULES    (4U)        /**< Hardware limit for ARGB strips */
 #define MAX_SUB_MODULES        (40U)       /**< Memory limit for submodules */
 #define MAX_REMOTE_NODES       (8U)        /**< Memory limit for remote nodes */
-
+#define NETWORK_NODE_DATA_LEN  (8U)       /**< Memory limit for node data */
 #define MAX_RUNTIME_PERSONALITIES   (MAX_SUB_MODULES * 2) /**< Memory limit for personalities */
 
 /* CAN constants */
@@ -92,7 +95,7 @@
 #define SUBMOD_FLAG_DIRTY        (1U << 1)   /**< Sub-module state has changed */
 #define SUBMOD_FLAG_DISABLED     (1U << 2)   /**< Sub-module is disabled */
 #define SUBMOD_FLAG_READ_ONLY    (1U << 3)   /**< Sub-module is read-only */
-#define SUBMOD_FLAG_VIRTUAL      (1U << 4)   /**< Sub-module is virtual */
+#define SUBMOD_FLAG_INTERNAL     (1U << 4)   /**< Sub-module is internal */
 #define SUBMOD_FLAG_DISPLAY      (1U << 5)   /**< Sub-module is a display or ui element */
 #define SUBMOD_FLAG_INPUT        (1U << 6)   /**< Sub-module is an input */
 #define SUBMOD_FLAG_OUTPUT       (1U << 7)   /**< Sub-module is an output */
