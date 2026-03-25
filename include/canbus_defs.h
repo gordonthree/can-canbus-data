@@ -30,10 +30,13 @@
 #define MAX_RUNTIME_PERSONALITIES   (MAX_SUB_MODULES * 2) /**< Memory limit for personalities */
 
 /* CAN constants */
-#define CAN_MAX_DLC            (8U)
-#define CAN_NODE_ID_LEN        (4U)
-#define CAN_DATAMSG_MIN_DLC    (6U)         /**< Minimum data message length */
-
+#define CAN_STD_FRAME          (0U)   /**< 0 = standard frame, 1 = extended frame */
+#define CAN_DATA_FRAME         (0U)   /**< 0 = data frame, 1 = remote frame */
+#define CAN_NORMAL_TX          (0U)   /**< 0 = normal transmission, 1 = SELF_RECEPTION 0 */
+#define CAN_NON_COMP_DLC       (0U)   /**< non-compliant DLC (0-8 bytes) */
+#define CAN_MAX_DLC            (8U)   /**< maximum data length code */
+#define CAN_NODE_ID_LEN        (4U)   /**< length of a node ID */
+#define CAN_DATAMSG_MIN_DLC    (6U)   /**< Minimum data message length */
 // time stuff
 #define NTP_SERVER             ("us.pool.ntp.org")
 #define UTC_OFFSET             (0)
