@@ -137,19 +137,6 @@
 #define INPUT_FLAG_RESERVED_6       (0x40U)  /**< bit 6 */
 #define INPUT_FLAG_RESERVED_7       (0x80U)  /**< bit 7 */
 
-/* === Producer Constants === */
-#define PRODUCER_FLAG_NONE         (0x00U)   /**< Producer publishing disabled */
-#define PRODUCER_FLAG_ENABLED      (0x01U)   /**< Producer publishing enabled */
-#define PRODUCER_FLAG_CHANGE_ONLY  (0x02U)   /**< Producer publish on change only */
-#define PRODUCER_FLAG_RESERVED1    (0x04U)
-#define PRODUCER_FLAG_RESERVED2    (0x08U)
-
-#define DEFAULT_PUBLISH_RATE       (1000U)    /**< Default publish period in ms (1 Hz) */
-#define PRODUCER_PUBLISH_DISABLED  (0U)       /**< Publish period disabled */
-
-#define PRODUCER_RATEMS_1HZ        (1000U)    /**< Publish period 1000ms 1 Hz */
-#define PRODUCER_RATEMS_10HZ       (100U)     /**< Publish period 100ms 10 Hz */
-#define PRODUCER_RATEMS_100HZ      (10U)      /**< Publish period 10ms 100 Hz */
 
 /* === GPIO ISR Constants === */
 
@@ -165,20 +152,7 @@
 #define GPIO_LONG_PRESS             (2U)       /**< Long press flag */
 #define GPIO_DOUBLE_CLICK           (3U)       /**< Double click flag */
 #define GPIO_SINGLE_CLICK           (1U)       /**< Single click flag */
-/**
- * @brief Producer behavioral type.
- */
-typedef enum
-{
-    PRODUCER_KIND_NONE     = 0,  /**< No producer / disabled */
-    PRODUCER_KIND_DIGITAL,       /**< Digital producer (0/1) */
-    PRODUCER_KIND_ANALOG,        /**< Analog producer (0–4095, etc.) */
-    PRODUCER_KIND_COUNTER,       /**< Counter / incrementing producer */
-    PRODUCER_KIND_TIMER,         /**< Timer / decrementing producer */
-    PRODUCER_KIND_PERIODIC,      /**< Periodic value producer */
-    PRODUCER_KIND_CUSTOM         /**< User-defined or extended behavior */
 
-} producer_kind_t;
 
 /* 13-bit LEDC duty cycles */
 #define LEDC_13BIT_0PCT           (0U)        /**< 0% is 0 */
