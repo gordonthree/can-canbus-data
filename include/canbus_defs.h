@@ -120,9 +120,9 @@
 #define INPUT_FLAG_SET_MODE(f,v)  (((f) & ~INPUT_FLAG_MASK_MODE) | (((v) & 0x07) << 3))      /**< Set the input switch type mode */
 
 /* Input resistor modes */
-#define INPUT_FLAG_PULL_FLOAT      (0x00U)  /**< 00: floating */
-#define INPUT_FLAG_PULL_UP         (0x01U)  /**< 01: pull-up */
-#define INPUT_FLAG_PULL_DOWN       (0x02U)  /**< 10: pull-down */
+#define INPUT_FLAG_PULL_FLOAT       (0x00U)  /**< 00: floating */
+#define INPUT_FLAG_PULL_UP          (0x01U)  /**< 01: pull-up */
+#define INPUT_FLAG_PULL_DOWN        (0x02U)  /**< 10: pull-down */
 
 /* Input logic invert states */
 #define INPUT_FLAG_INVERT           (0x04U)  /**< 1 << 2: invert logic */
