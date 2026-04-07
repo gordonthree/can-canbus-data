@@ -100,8 +100,8 @@
 #define SUBMOD_FLAG_READ_ONLY    (1U << 3)   /**< Sub-module is read-only */
 #define SUBMOD_FLAG_INTERNAL     (1U << 4)   /**< Sub-module is internal */
 #define SUBMOD_FLAG_DISPLAY      (1U << 5)   /**< Sub-module is a display or ui element */
-#define SUBMOD_FLAG_INPUT        (1U << 6)   /**< Sub-module is an input */
-#define SUBMOD_FLAG_OUTPUT       (1U << 7)   /**< Sub-module is an output */
+#define SUBMOD_FLAG_DIRECTION    (1U << 6)   /**< Sub-module IO direction, set for input, clear for output */ 
+#define SUBMOD_FLAG_NETWORK      (1U << 7)   /**< Sub-module connected to remote node */
 
 /* Input mode flag masks */
 #define INPUT_FLAG_MASK_PULL     (0x03U)   /**< Pull-up or pull-down 0b0000 0011 */
