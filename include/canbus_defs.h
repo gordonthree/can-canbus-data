@@ -147,6 +147,7 @@
 /* Momentary mode output values */
 #define MOMENTARY_RELEASE_VALUE     (10u)     /**< Flag to indicate momentary button release state */
 #define MOMENTARY_ACTIVE_VALUE      (11u)     /**< Flag to indicate momentary button active state */
+#define MOMENTARY_RELEASE_REPEAT    (3u)      /**< Number of times to repeat the release state message */
 
 /* Normal mode */
 #define GPIO_LONG_PRESS             (2U)       /**< Long press flag */
