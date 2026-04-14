@@ -52,6 +52,21 @@ static inline void packUint32ToBytes(uint32_t inVal, uint8_t* outArray) {
 }
 
 /**
+ * @brief Convert uint64_t to 8-byte array (Big Endian).
+ */
+static inline void packUint64ToBytes(uint64_t inVal, uint8_t* outArray) {
+    if (outArray != NULL) {
+        outArray[0] = (uint8_t)(inVal >> 56);
+        outArray[1] = (uint8_t)(inVal >> 48);
+        outArray[2] = (uint8_t)(inVal >> 40);
+        outArray[3] = (uint8_t)(inVal >> 32);
+        outArray[4] = (uint8_t)(inVal >> 24);
+        outArray[5] = (uint8_t)(inVal >> 16);
+        outArray[6] = (uint8_t)(inVal >> 8) ;
+        outArray[7] = (uint8_t)(inVal);
+    }
+}
+/**
  * @brief Convert uint16_t to 2-byte array (Big Endian).
  */
 static inline void BC_Chunk16(uint16_t inVal, uint8_t* outArray) {
